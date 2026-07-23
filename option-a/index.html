@@ -712,6 +712,55 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
   color: var(--muted);
   line-height: 1.5;
 }
+
+/* ══════════════════════════════════════
+   DESKTOP REFINEMENTS (≥901px only)
+   Hiérarchie des intitulés, largeurs, alignements.
+   Textes toujours alignés à gauche (sauf Comparaison,
+   seule section explicitement centrée).
+   Ne modifie jamais les règles ≤900px.
+══════════════════════════════════════ */
+@media(min-width:901px){
+
+  /* 1. Intitulés de section — nettement plus visibles */
+  .eyebrow{font-size:14px;margin-bottom:1.4rem}
+
+  /* 2. Diagnostic — l'intro utilise toute la largeur du conteneur,
+        même point de départ que les 3 chiffres en dessous */
+  .pb-header{max-width:none}
+
+  /* 3. Comparaison — seule section centrée, au-dessus du graphique */
+  .compare-head{
+    max-width:680px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+  }
+
+  /* 4. Gamme — intro alignée sur toute la largeur des 2 cartes */
+  #gamme>.wrap>.eyebrow,
+  #gamme>.wrap>h2,
+  .gamme-intro{max-width:none}
+
+  /* 5. Science & crédibilité — intro alignée sur toute la largeur
+        de la grille de cartes */
+  .sci-head{max-width:none}
+}
+
+/* Titre Gamme sur une seule ligne uniquement sur les très grands
+   écrans (le retour à la ligne reste actif sur desktop plus petit,
+   comme demandé) — n'affecte que ce <br>, jamais le texte lui-même */
+@media(min-width:1200px){
+  .br-lg{display:none}
+}
+
+@media(min-width:901px){
+  /* 6. Accès prioritaire — 2 colonnes ≈45/55, alignées en haut
+        (le bloc titre est déplacé dans la colonne gauche côté HTML,
+        identique sur les 2 pages) */
+  .acces-layout{grid-template-columns:.9fr 1.1fr}
+  .acces-intro-block{margin-bottom:2rem}
+}
 </style>
 </head>
 <body>
@@ -838,7 +887,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 <section id="gamme">
   <div class="wrap">
     <span class="eyebrow">La gamme</span>
-    <h2>Votre routine quotidienne<br>&laquo;&thinsp;performance durable&thinsp;&raquo;.</h2>
+    <h2>Votre routine quotidienne<br class="br-lg">&laquo;&thinsp;performance durable&thinsp;&raquo;.</h2>
     <p class="gamme-intro">2 formules con&ccedil;ues pour fonctionner en synergie. Chacune r&eacute;pond &agrave; un moment pr&eacute;cis du cycle de performance quotidienne.</p>
     <div class="gamme-grid">
       <div class="gcard gcard-am">
@@ -953,13 +1002,14 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 <!-- ═══ 8. ACCÈS ═══ -->
 <section id="acces">
   <div class="wrap">
-    <div class="acces-intro-block">
-      <span class="eyebrow">Acc&egrave;s prioritaire</span>
-      <h2>Continuez &agrave; performer.<br>Plus longtemps.</h2>
-      <p class="acces-intro">Recevez les derni&egrave;res informations sur le lancement.<br>Acc&egrave;s prioritaire aux pr&eacute;commandes.<br>Tarif Early Bird r&eacute;serv&eacute; aux premiers inscrits.<br>Inscrivez-vous, vous serez parmi les premiers inform&eacute;s et invit&eacute;s &agrave; tester.</p>
-    </div>
     <div class="acces-layout">
       <div class="acces-left">
+            <div class="acces-intro-block">
+          <span class="eyebrow">Acc&egrave;s prioritaire</span>
+          <h2>Continuez &agrave; performer.<br>Plus longtemps.</h2>
+          <p class="acces-intro">Recevez les derni&egrave;res informations sur le lancement.<br>Acc&egrave;s prioritaire aux pr&eacute;commandes.<br>Tarif Early Bird r&eacute;serv&eacute; aux premiers inscrits.<br>Inscrivez-vous, vous serez parmi les premiers inform&eacute;s et invit&eacute;s &agrave; tester.</p>
+        </div>
+    
         <div class="acces-bullets">
           <div class="ab"><div class="ab-ic">&#128640;</div><div class="ab-text"><h4>Acc&egrave;s avant le public</h4><p>Inform&eacute; en exclusivit&eacute; &middot; tarif fondateur.</p></div></div>
           <div class="ab"><div class="ab-ic">&#129514;</div><div class="ab-text"><h4>Influencer le d&eacute;veloppement</h4><p>Vos retours orientent la formulation finale.</p></div></div>

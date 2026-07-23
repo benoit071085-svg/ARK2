@@ -3,6 +3,21 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v6 — 2026-07-23
+
+**Commun** (shared/styles.css, propagé aux 2 pages) + restructuration HTML identique dans les 2 fichiers
+
+Reconstruit par-dessus v4 (v5 a été annulée à la demande). Toutes les règles sont isolées dans des blocs `@media(min-width:901px)` / `@media(min-width:1200px)` — aucune règle ≤900px modifiée.
+
+- **Intitulés de section** : nettement plus visibles sur desktop (14px, espace avant le titre augmenté). Mobile inchangé.
+- **Diagnostic** : le bloc d'intro (titre + texte) utilise toute la largeur du conteneur, même point de départ à gauche que les 3 chiffres. Pas de centrage.
+- **Comparaison** : seule section centrée (intitulé + titre `text-align:center`, bloc centré au-dessus du graphique). Graphique inchangé.
+- **Gamme** : intro alignée à gauche sur toute la largeur des 2 cartes. Le titre passe sur une seule ligne à partir de 1200px (via une classe sur le `<br>` existant, texte non modifié), reste sur 2 lignes en dessous.
+- **Science & crédibilité** : intro alignée à gauche, largeur alignée sur la grille de cartes (résout le passage à 3 lignes).
+- **Accès prioritaire** : structure 2 colonnes ≈45/55, bloc titre déplacé dans la colonne gauche pour un alignement parfait avec le formulaire. Ordre mobile inchangé.
+
+Vérifié par comparaison de contenu : textes, images et ordre des sections strictement identiques à v4.
+
 ## v4 — 2026-07-23
 
 **Commun** (via `shared/styles.css` + `shared/script.js`, propagé aux deux pages par `scripts/sync.py`)
