@@ -219,7 +219,7 @@ section[id]{scroll-margin-top:76px}
 #acces{background:var(--ink-soft);border-top:1px solid rgba(255,255,255,.05)}
 #acces .eyebrow{color:#72B891}
 #acces h2{color:var(--white)}
-.acces-intro-block{margin-bottom:2.75rem}
+.acces-intro-block{max-width:580px;margin-bottom:2.75rem}
 .acces-intro{font-size:.9375rem;color:rgba(245,243,238,.55);margin:.75rem 0 0;line-height:1.72}
 .acces-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:4.5rem;align-items:flex-start}
 .acces-layout>*{margin-top:0}
@@ -712,62 +712,6 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
   color: var(--muted);
   line-height: 1.5;
 }
-
-/* ══════════════════════════════════════
-   DESKTOP REFINEMENTS (≥901px only)
-   Centrage, alignement et rythme vertical.
-   Ne modifie jamais les règles ≤900px.
-══════════════════════════════════════ */
-@media(min-width:901px){
-
-  /* 2. Blocs d'intro de section : largeur cohérente + centrés,
-        texte toujours aligné à gauche */
-  .pb-header,
-  .compare-head,
-  .sci-head{
-    max-width:720px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  #gamme>.wrap>.eyebrow,
-  #gamme>.wrap>h2,
-  .gamme-intro{
-    max-width:720px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  #benefices>.wrap>.eyebrow,
-  #benefices>.wrap>h2{
-    max-width:720px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-
-  /* 3. Diagnostic — resserre l'intro aux cartes, centre la conclusion + CTA */
-  .pb-header{margin-bottom:2.75rem}
-  .pb-footer{
-    max-width:720px;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:.5rem;
-  }
-  .pb-footer-sub{margin-bottom:1rem}
-
-  /* 4. Gamme — largeur d'intro légèrement augmentée, resserrée aux cartes */
-  .gamme-intro{margin:.8rem 0 2rem}
-
-  /* 5. Science — largeur d'intro légèrement augmentée, resserrée à la grille */
-  .sci-head{margin-bottom:2rem}
-
-  /* 1. Accès prioritaire — vraie structure 2 colonnes ≈45/55,
-        alignées en haut (le déplacement du bloc titre dans la
-        colonne gauche se fait côté HTML, identique sur A et B) */
-  .acces-layout{
-    grid-template-columns:.9fr 1.1fr;
-    gap:4rem;
-  }
-  .acces-intro-block{margin-bottom:2rem}
-}
 </style>
 </head>
 <body>
@@ -1009,14 +953,13 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 <!-- ═══ 8. ACCÈS ═══ -->
 <section id="acces">
   <div class="wrap">
+    <div class="acces-intro-block">
+      <span class="eyebrow">Acc&egrave;s prioritaire</span>
+      <h2>Continuez &agrave; performer.<br>Plus longtemps.</h2>
+      <p class="acces-intro">Recevez les derni&egrave;res informations sur le lancement.<br>Acc&egrave;s prioritaire aux pr&eacute;commandes.<br>Tarif Early Bird r&eacute;serv&eacute; aux premiers inscrits.<br>Inscrivez-vous, vous serez parmi les premiers inform&eacute;s et invit&eacute;s &agrave; tester.</p>
+    </div>
     <div class="acces-layout">
       <div class="acces-left">
-            <div class="acces-intro-block">
-          <span class="eyebrow">Acc&egrave;s prioritaire</span>
-          <h2>Continuez &agrave; performer.<br>Plus longtemps.</h2>
-          <p class="acces-intro">Recevez les derni&egrave;res informations sur le lancement.<br>Acc&egrave;s prioritaire aux pr&eacute;commandes.<br>Tarif Early Bird r&eacute;serv&eacute; aux premiers inscrits.<br>Inscrivez-vous, vous serez parmi les premiers inform&eacute;s et invit&eacute;s &agrave; tester.</p>
-        </div>
-    
         <div class="acces-bullets">
           <div class="ab"><div class="ab-ic">&#128640;</div><div class="ab-text"><h4>Acc&egrave;s avant le public</h4><p>Inform&eacute; en exclusivit&eacute; &middot; tarif fondateur.</p></div></div>
           <div class="ab"><div class="ab-ic">&#129514;</div><div class="ab-text"><h4>Influencer le d&eacute;veloppement</h4><p>Vos retours orientent la formulation finale.</p></div></div>

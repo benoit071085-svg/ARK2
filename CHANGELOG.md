@@ -3,19 +3,6 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
-## v5 — 2026-07-23
-
-**Commun** (shared/styles.css, propagé aux 2 pages) + restructuration HTML identique dans les 2 fichiers
-
-Toutes les règles sont isolées dans un bloc `@media(min-width:901px)` dédié — aucune règle ≤900px n'est modifiée, l'expérience mobile reste strictement identique.
-
-- **Accès prioritaire** : restructuration réelle en 2 colonnes desktop (≈45/55). Le bloc "intitulé + titre + intro" est déplacé à l'intérieur de la colonne gauche (au-dessus des 3 bénéfices), pour que le haut de la colonne gauche et le haut du questionnaire soient parfaitement alignés. Sur mobile, l'ordre de lecture reste identique (intro → bénéfices → questionnaire), aucun changement d'espacement en dehors du desktop.
-- **Diagnostic, Comparaison, Science** : blocs d'intro centrés dans la page (720px), texte toujours aligné à gauche. Bloc de conclusion (physiologie + CTA) également centré et resserré.
-- **Gamme, Bénéfices** : intitulé + titre (+ texte d'intro pour Gamme) centrés et légèrement élargis, sans wrapper HTML supplémentaire (sélection CSS ciblée).
-- Cartes, statistiques et grilles conservent toute la largeur du conteneur (1080px), comme demandé.
-
-Vérifié par comparaison de contenu avant/après : tous les textes, toutes les images et l'ordre des sections sont strictement identiques — seule la position du bloc titre "Accès prioritaire" a changé (déplacé dans la colonne gauche, contenu inchangé). Le tableau comparatif n'a pas été touché.
-
 ## v4 — 2026-07-23
 
 **Commun** (via `shared/styles.css` + `shared/script.js`, propagé aux deux pages par `scripts/sync.py`)
