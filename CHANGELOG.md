@@ -3,6 +3,26 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v12 — 2026-07-23
+
+**Audit complet de l'implémentation GA4** suite à un signalement : aucune requête `google-analytics.com/g/collect` visible, aucun utilisateur en Realtime.
+
+**Revue de code effectuée (8 points demandés)** :
+1. `gtag.js` correctement référencé (`<script async src="https://www.googletagmanager.com/gtag/js?id=G-FECB9TXHZ6">`)
+2. `gtag('config', 'G-FECB9TXHZ6')` bien exécuté (appelé une fois, juste après `gtag('js', new Date())`)
+3. Aucune erreur de syntaxe JS détectée sur les 3 blocs `<script>` de chaque page (vérifié via parseur Node)
+4. Les appels `gtag('event', ...)` sont bien exécutés directement, sans fonction intermédiaire
+5. `page_view` automatique : couvert par `gtag('config', ...)`, standard officiel
+6. Événements personnalisés en `gtag('event', ...)` direct — confirmé, pas de wrapper `track()` résiduel
+7. Le script applicatif (`app-script`) ne fait ses appels `gtag()` que dans des gestionnaires d'événements (clic, scroll, IntersectionObserver), jamais au chargement immédiat — laisse largement le temps à `gtag.js` de charger de façon asynchrone
+8. Impossible à vérifier depuis cet environnement (pas d'accès réseau aux domaines Google depuis le sandbox d'exécution) — nécessite une vérification manuelle côté navigateur
+
+**Bug réel identifié et corrigé** : `<meta charset="UTF-8">` n'était pas le tout premier élément de `<head>` (le snippet gtag.js le précédait). Ce n'est pas conforme à la spec HTML5 (le charset doit être déclaré en tout premier, dans les 1024 premiers octets). Corrigé : `<meta charset="UTF-8">` est maintenant le tout premier enfant de `<head>`, suivi immédiatement du snippet gtag.js.
+
+**Cause la plus probable des zéro requêtes**, non vérifiable ni corrigeable depuis le code seul : un bloqueur de publicité/traqueurs (uBlock Origin, Brave Shields, protection anti-pistage de Firefox/Chrome...) actif lors du test, qui bloque silencieusement `googletagmanager.com` — c'est la cause n°1 en pratique de ce symptôme exact (code correct, zéro requête). Autre piste à vérifier côté compte Google : un mode de consentement (Consent Mode) actif sur la propriété GA4/Google Ads avec un état par défaut "refusé", qui empêcherait `gtag.js` d'envoyer la moindre requête tant qu'aucun consentement n'est accordé — aucune bannière de consentement n'est implémentée sur les pages, donc si Consent Mode est actif côté compte, cela expliquerait exactement ce symptôme.
+
+Aucun texte, image, ordre de section ou logique de tracking modifié — vérifié par comparaison de contenu.
+
 ## v11 — 2026-07-23
 
 **Commun** (shared/script.js, propagé aux 2 pages)
