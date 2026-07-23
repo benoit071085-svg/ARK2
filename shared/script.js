@@ -7,12 +7,13 @@ function track(ev,data){
   if(t&&m){m.textContent=ev.replace(/_/g,' ');t.classList.add('show');clearTimeout(_tT);_tT=setTimeout(function(){t.classList.remove('show');},2000);}
 }
 /* SMOOTH SCROLL */
+var _reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function toAcces(e){
   if(e)e.preventDefault();
-  var s=document.getElementById('acces');
-  if(!s)return;
-  s.scrollIntoView({behavior:'smooth',block:'start'});
-  setTimeout(function(){var el=s.querySelector('select,input[type=email]');if(el)el.focus({preventScroll:true});},700);
+  var target=document.querySelector('#acces .form-box')||document.getElementById('acces');
+  if(!target)return;
+  target.scrollIntoView({behavior:_reduceMotion?'auto':'smooth',block:'start'});
+  setTimeout(function(){var el=target.querySelector('select,input[type=email]')||document.querySelector('#acces select,#acces input[type=email]');if(el)el.focus({preventScroll:true});},_reduceMotion?0:700);
 }
 /* INIT */
 document.addEventListener('DOMContentLoaded',function(){

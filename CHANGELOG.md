@@ -3,6 +3,17 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v4 — 2026-07-23
+
+**Commun** (via `shared/styles.css` + `shared/script.js`, propagé aux deux pages par `scripts/sync.py`)
+- **CTA → questionnaire** : tous les CTA menant à `#acces` font désormais défiler directement jusqu'au `form-box` (au lieu du haut de section), avec une marge de défilement (`scroll-margin-top`) pour ne jamais être masqués par la navigation sticky. Respecte `prefers-reduced-motion` (défilement instantané si activé).
+- **Navigation sticky** : ajout d'un `scroll-margin-top` générique sur toutes les sections (`section[id]`), pour tout lien d'ancrage futur.
+- **Titres de section** (Le diagnostic, Le concept, La comparaison, La gamme, Bénéfices, Science & crédibilité, Accès prioritaire) : taille augmentée (10px → 12px), poids renforcé (700 → 800), espace avant le titre principal augmenté (.75rem → 1.1rem). Texte inchangé.
+- **Alignement Accès prioritaire** : colonnes explicitement alignées en haut (`align-items:flex-start`), suppression de toute marge supérieure parasite.
+- **Harmonisation des largeurs** : le bloc d'intro de la section Comparaison (`.compare-head`) aligné sur la largeur des autres intros de section (660px), pour une lecture plus cohérente.
+
+Aucun texte, image, tableau comparatif, ordre de section ou couleur principale modifié — vérifié par comparaison de contenu avant/après (uniquement le CSS et le JS partagés ont changé).
+
 ## v3 — 2026-07-23
 
 **Commun**

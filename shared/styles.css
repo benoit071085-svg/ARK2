@@ -31,7 +31,7 @@ h4{font-size:.875rem;font-weight:600;line-height:1.4;color:var(--ink)}
 p,li{font-size:.9375rem;color:var(--muted);line-height:1.72}
 .lead{font-size:1.05rem;color:var(--ink-soft);line-height:1.75}
 strong{font-weight:600;color:var(--ink)}
-.eyebrow{display:block;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem}
+.eyebrow{display:block;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:1.1rem}
 
 /* ══════════════════════════════════════
    BUTTONS — one system
@@ -58,6 +58,8 @@ strong{font-weight:600;color:var(--ink)}
    NAV
 ══════════════════════════════════════ */
 nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:.85rem 0}
+section[id]{scroll-margin-top:76px}
+.form-box{scroll-margin-top:96px}
 .nav-in{display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--display);font-size:1.3rem;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
 .logo em{color:var(--green);font-style:normal}
@@ -127,7 +129,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,.95);backdrop-
    4. COMPARE — standalone section
 ══════════════════════════════════════ */
 #compare{background:var(--cream);padding:var(--py) 0}
-.compare-head{margin-bottom:2.25rem}
+.compare-head{margin-bottom:2.25rem;max-width:660px}
 .compare-head h2{margin-bottom:0}
 .compare-img{border-radius:var(--r16);overflow:hidden;box-shadow:var(--shadow-lg)}
 .compare-img img{width:100%;height:auto;display:block}
@@ -208,7 +210,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,.95);backdrop-
 #acces h2{color:var(--white)}
 .acces-intro-block{max-width:580px;margin-bottom:2.75rem}
 .acces-intro{font-size:.9375rem;color:rgba(245,243,238,.55);margin:.75rem 0 0;line-height:1.72}
-.acces-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:4.5rem;align-items:start}
+.acces-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:4.5rem;align-items:flex-start}
+.acces-layout>*{margin-top:0}
 .acces-bullets{display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
 .ab{display:flex;gap:.85rem;align-items:flex-start}
 .ab-ic{width:36px;height:36px;flex-shrink:0;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:.85rem}
