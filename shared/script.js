@@ -1,22 +1,13 @@
 /* ═══════════════════════════════════════════
-   TRACKING — GTM dataLayer
-   Toute interaction passe par track(), qui pousse
-   systématiquement dans window.dataLayer (jamais
-   uniquement en variable locale ou en console).
+   TRACKING — Google Analytics 4 (gtag.js direct)
+   gtag() est fourni par le snippet officiel dans <head>.
+   Aucune couche dataLayer / GTM personnalisée.
 ═══════════════════════════════════════════ */
-window.dataLayer = window.dataLayer || [];
-function track(eventName, eventData){
-  var payload = Object.assign(
-    { event: eventName, variant: document.body.dataset.variant },
-    eventData || {}
-  );
-  window.dataLayer.push(payload);
-  console.log('[TRACK]', payload);
-}
 
 /* ═══════════════════════════════════════════
    UTM CAPTURE — persistés en sessionStorage,
    réinjectés dans les champs cachés du formulaire
+   (données de campagne envoyées à Netlify Forms)
 ═══════════════════════════════════════════ */
 (function captureUTMs(){
   var params = ['utm_source','utm_medium','utm_campaign','utm_content'];
@@ -49,16 +40,16 @@ function toAcces(e){
 /* INIT */
 document.addEventListener('DOMContentLoaded',function(){
 
-  /* CTA → #acces : un seul cta_click par clic, comportement de scroll inchangé */
+  /* CTA → #acces : cta_click { cta_location }, position uniquement (jamais le texte) */
   document.querySelectorAll('a[href="#acces"]').forEach(function(a){
     a.addEventListener('click',function(e){
       var loc = a.getAttribute('data-cta-location') || 'unknown';
-      track('cta_click', { cta_location: loc });
+      gtag('event', 'cta_click', { cta_location: loc });
       toAcces(e);
     });
   });
 
-  /* Problem stat accordion */
+  /* Problem stat accordion (comportement UI uniquement) */
   document.querySelectorAll('.pb-stat').forEach(function(card){
     function tog(){
       var was=card.classList.contains('open');
@@ -69,7 +60,7 @@ document.addEventListener('DOMContentLoaded',function(){
     card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});
   });
 
-  /* Benefit tabs */
+  /* Benefit tabs (comportement UI uniquement) */
   document.querySelectorAll('.btab').forEach(function(btn){
     btn.addEventListener('click',function(){
       var tid=btn.getAttribute('data-tab');
@@ -80,7 +71,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
-  /* Science expand */
+  /* Science expand (comportement UI uniquement) */
   document.querySelectorAll('.sci-card').forEach(function(card){
     function togS(){
       var o=card.classList.toggle('open');
@@ -90,13 +81,13 @@ document.addEventListener('DOMContentLoaded',function(){
     card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();togS();}});
   });
 
-  /* Product interest buttons → product_interest (un seul événement par clic) */
+  /* Product interest buttons → product_interest { product_id } */
   document.querySelectorAll('.cta-interest').forEach(function(btn){
     btn.addEventListener('click',function(){
       if(btn.classList.contains('done'))return;
       btn.classList.add('done');btn.textContent='Int\u00e9r\u00eat not\u00e9 \u2713';
       var pid = btn.getAttribute('data-product-id');
-      if (pid) track('product_interest', { product_id: pid });
+      if (pid) gtag('event', 'product_interest', { product_id: pid });
     });
   });
 
@@ -112,7 +103,7 @@ document.addEventListener('DOMContentLoaded',function(){
         entries.forEach(function(entry){
           if (entry.isIntersecting && !viewed) {
             viewed = true;
-            track('form_view');
+            gtag('event', 'form_view');
             viewObserver.disconnect();
           }
         });
@@ -125,7 +116,7 @@ document.addEventListener('DOMContentLoaded',function(){
     function markStarted(){
       if (started) return;
       started = true;
-      track('form_start');
+      gtag('event', 'form_start');
     }
     form.querySelectorAll('input, select, textarea').forEach(function(field){
       field.addEventListener('focus', markStarted, { once:true });
@@ -139,7 +130,7 @@ document.addEventListener('DOMContentLoaded',function(){
       earlybirdBox.addEventListener('change', function(){
         if (earlybirdBox.checked && !earlybirdSent) {
           earlybirdSent = true;
-          track('earlybird_select', { selected: true });
+          gtag('event', 'earlybird_select');
         }
       });
     }
@@ -177,13 +168,11 @@ document.addEventListener('DOMContentLoaded',function(){
         body: body
       }).then(function(res){
         if (!res.ok) throw new Error('Netlify Forms error: ' + res.status);
-        /* email jamais envoyé au dataLayer / GTM / GA */
-        track('form_submit', {
-          age_band: formData.get('age'),
+        /* email jamais envoyé à Google Analytics */
+        gtag('event', 'form_submit', {
+          age: formData.get('age'),
           sport_frequency: formData.get('sport_frequency'),
-          professional_status: formData.get('professional_status'),
-          contact_optin: formData.get('contact_optin') !== null,
-          earlybird_optin: formData.get('earlybird_optin') !== null
+          professional_status: formData.get('professional_status')
         });
         form.style.display = 'none';
         var msg = document.getElementById('successMsg');
@@ -197,7 +186,7 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 });
 
-/* ── scroll_depth 50% (une seule fois, ne se répète pas en remontant) ── */
+/* ── scroll_depth 50% (une seule fois par visite) ── */
 (function(){
   var fired = false;
   function checkScroll(){
@@ -206,7 +195,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var full = document.documentElement.scrollHeight;
     if (full > 0 && (scrolled / full) >= 0.5) {
       fired = true;
-      track('scroll_depth', { percent: 50 });
+      gtag('event', 'scroll_depth', { percent: 50 });
       window.removeEventListener('scroll', checkScroll);
     }
   }
@@ -228,7 +217,7 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 })();
 
-/* ── Ingrédients sport-grade accordéon ── */
+/* ── Ingrédients sport-grade accordéon (comportement UI uniquement) ── */
 document.querySelectorAll('.sci-ingr-btn').forEach(function(btn){
   btn.addEventListener('click',function(e){
     e.stopPropagation();
@@ -239,7 +228,7 @@ document.querySelectorAll('.sci-ingr-btn').forEach(function(btn){
   btn.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();btn.click();}});
 });
 
-/* ── Gamme bénéfices accordéon ── */
+/* ── Gamme bénéfices accordéon (comportement UI uniquement) ── */
 document.querySelectorAll('.gcard-acc-btn').forEach(function(btn){
   btn.addEventListener('click',function(){
     var card=btn.closest('.gcard');

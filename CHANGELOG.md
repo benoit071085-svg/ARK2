@@ -3,6 +3,24 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v9 — 2026-07-23
+
+**Commun** (shared/script.js réécrit + tête gtag.js identique dans les 2 fichiers)
+
+Simplification complète de l'analytics : suppression de Google Tag Manager et de toute la couche `dataLayer`/`track()` personnalisée, remplacée par des appels `gtag('event', ...)` directs.
+
+- **GTM supprimé** : plus aucune référence GTM-NPKVG7JS, plus de `window.dataLayer` personnalisé, plus de fonction `track()`, plus de bloc `<noscript>` GTM.
+- **GA4 installé directement** : snippet officiel `gtag.js` (`G-FECB9TXHZ6`) dans `<head>`, `gtag('config', ...)` appelé une fois.
+- **cta_click** : `{ cta_location }` uniquement (jamais le texte du bouton) — 6/6 CTA des 2 pages trackés (nav, hero, problem, concept, benefits, science). Aucun CTA footer n'existe actuellement sur les pages, donc cette valeur n'est pas utilisée pour l'instant — signalé ci-dessous.
+- **product_interest** : `{ product_id }` sur les 2 boutons Gamme de chaque page.
+- **form_view / form_start** : une fois chacun par visite, mêmes déclencheurs qu'avant (IntersectionObserver 50%, première interaction).
+- **form_submit** : uniquement `{ age, sport_frequency, professional_status }` — email jamais envoyé à GA4, ni aucun autre champ.
+- **earlybird_select** : une fois, uniquement décoché → coché, sans paramètre.
+- **scroll_depth** : `{ percent: 50 }`, une fois par visite.
+- **Netlify Forms** : inchangé (déjà en place depuis v8) — email, âge, fréquence sportive, statut professionnel, consentement marketing et intérêt Early Bird continuent d'être enregistrés dans Netlify Forms.
+
+Aucun texte, image ni ordre de section modifié — vérifié par comparaison de contenu. Les deux pages partagent exactement le même `shared/script.js` : niveau de tracking strictement identique entre Option A et Option B.
+
 ## v8 — 2026-07-23
 
 **Commun** (shared/script.js + shared/styles.css) + éléments spécifiques identiques en structure dans les 2 fichiers (variante, nom de formulaire, product_id)
