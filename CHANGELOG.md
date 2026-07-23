@@ -3,6 +3,16 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v10 — 2026-07-23
+
+**Commun** (shared/script.js, propagé aux 2 pages) + product_id corrigés dans option-b/index.html
+
+- **Vérification "Rejoindre l'accès prioritaire"** : confirmé qu'il n'y avait pas de double comptage — le bouton de soumission (`<button type="submit" class="cta-submit">`) n'a jamais été câblé au listener `cta_click` (celui-ci ne cible que les `<a href="#acces">`). Code rendu explicite et blindé : garde-fou `tagName !== 'A'`, commentaires clarifiant que le bouton de soumission ne déclenche jamais que `form_submit`, uniquement après succès Netlify.
+- **product_id Option B corrigés** : `post_sport_recovery` → `post_workout_recovery`, `night_recovery` → `overnight_recovery`. Option A déjà conforme (`morning_formula` / `evening_formula`), inchangée.
+- **Vérification finale** : 6/6 CTA de chaque page déclenchent `cta_click` (nav, hero, problem, concept, benefits, science) ; aucun événement en double ; les 2 pages partagent le même `shared/script.js` — tracking strictement identique entre A et B.
+
+Aucun texte, image ou ordre de section modifié — vérifié par comparaison de contenu.
+
 ## v9 — 2026-07-23
 
 **Commun** (shared/script.js réécrit + tête gtag.js identique dans les 2 fichiers)

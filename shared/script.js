@@ -40,8 +40,14 @@ function toAcces(e){
 /* INIT */
 document.addEventListener('DOMContentLoaded',function(){
 
-  /* CTA → #acces : cta_click { cta_location }, position uniquement (jamais le texte) */
+  /* CTA → #acces : cta_click { cta_location }, position uniquement (jamais le texte).
+     IMPORTANT : réservé aux liens <a> qui mènent vers la section #acces (Hero, Problem,
+     Concept, Benefits, Science, Nav). Le bouton de soumission du formulaire
+     (<button type="submit" class="cta-submit">) n'est jamais concerné par ce sélecteur
+     — c'est un <button>, pas un <a href="#acces"> — et déclenche uniquement form_submit,
+     plus bas, après confirmation de Netlify. Aucun double comptage possible. */
   document.querySelectorAll('a[href="#acces"]').forEach(function(a){
+    if (a.tagName !== 'A') return; // garde-fou explicite, ne cible jamais un bouton
     a.addEventListener('click',function(e){
       var loc = a.getAttribute('data-cta-location') || 'unknown';
       gtag('event', 'cta_click', { cta_location: loc });
@@ -135,7 +141,9 @@ document.addEventListener('DOMContentLoaded',function(){
       });
     }
 
-    /* Soumission réelle vers Netlify Forms via fetch */
+    /* Soumission réelle vers Netlify Forms via fetch.
+       Ce bouton ne déclenche JAMAIS cta_click — uniquement form_submit,
+       et seulement après une réponse HTTP réussie de Netlify. */
     var submitBtn = form.querySelector('.cta-submit');
     var submitting = false;
 
