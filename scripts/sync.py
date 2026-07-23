@@ -44,8 +44,8 @@ def sync_file(path: Path, shared_css: str, shared_js: str) -> bool:
         flags=re.S,
     )
     updated = re.sub(
-        r"<script>(?!\s*src=).*?</script>",
-        lambda m: "<script>\n" + shared_js + "\n</script>",
+        r'<script id="app-script">.*?</script>',
+        lambda m: '<script id="app-script">\n' + shared_js + "\n</script>",
         updated,
         count=1,
         flags=re.S,

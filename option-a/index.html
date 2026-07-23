@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NPKVG7JS');
+</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Perform40 — Nutrition de Performance Quotidienne</title>
@@ -254,9 +263,6 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 .foot-note{font-size:.7rem;color:rgba(255,255,255,.18)}
 
 /* TOAST */
-.toast{position:fixed;bottom:1rem;right:1rem;background:rgba(15,20,16,.95);color:var(--white);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.5rem .95rem;font-size:.72rem;font-family:var(--body);opacity:0;transform:translateY(5px);transition:opacity .22s,transform .22s;pointer-events:none;z-index:200;white-space:nowrap}
-.toast.show{opacity:1;transform:translateY(0)}
-.toast strong{color:#72B891}
 
 /* ══════════════════════════════════════
    RESPONSIVE — mobile-first
@@ -746,13 +752,17 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 }
 </style>
 </head>
-<body>
+<body data-variant="A-performance">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPKVG7JS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- NAV -->
 <nav>
   <div class="wrap nav-in">
     <a class="logo" href="#hero">Perform<em>40</em></a>
-    <a class="cta cta-nav" href="#acces">Acc&egrave;s prioritaire</a>
+    <a class="cta cta-nav" href="#acces" data-cta-location="nav">Acc&egrave;s prioritaire</a>
   </div>
 </nav>
 
@@ -767,7 +777,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
       </h1>
       <p class="hero-sub">Apr&egrave;s 40 ans, votre corps ne r&eacute;pond plus &agrave; l&rsquo;effort comme avant. Votre physiologie &eacute;volue<br>Votre nutrition doit &eacute;voluer elle aussi.<br>La premi&egrave;re nutrition sportive quotidienne con&ccedil;ue pour les sportifs actifs 40+ afin de pr&eacute;server durablement leur pratique sportive et leur &eacute;nergie au quotidien.</p>
       <div class="hero-cta-row">
-        <a class="cta cta-hero" href="#acces">
+        <a class="cta cta-hero" href="#acces" data-cta-location="hero">
           S&rsquo;inscrire en acc&egrave;s prioritaire
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
@@ -815,7 +825,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
     <div class="pb-footer">
       <p class="pb-footer-statement"><strong>Ce n&rsquo;est pas une question de volont&eacute;. C&rsquo;est une question de physiologie.</strong></p>
       <p class="pb-footer-sub">Pour continuer &agrave; performer durablement et profiter pleinement des b&eacute;n&eacute;fices du sport, vous devez adapter vos apports micronutritionnels et votre entra&icirc;nement.</p>
-      <a class="cta" href="#acces">
+      <a class="cta" href="#acces" data-cta-location="problem">
         S&rsquo;inscrire maintenant
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </a>
@@ -838,7 +848,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
         <p>Parce qu&rsquo;apr&egrave;s 40 ans, la vraie performance se construit chaque jour.</p>
       </div>
       <div class="concept-tagline">Continuez &agrave; faire ce que vous aimez.<br>Plus longtemps.</div>
-      <a class="cta" href="#acces">
+      <a class="cta" href="#acces" data-cta-location="concept">
         S&rsquo;inscrire maintenant
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </a>
@@ -883,7 +893,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
           <li>Pr&eacute;paration &agrave; l&rsquo;effort physique et cognitif</li>
           <li>R&eacute;sistance au stress et &agrave; la fatigue</li>
         </ul>
-        <button class="cta cta-ghost cta-interest" data-track="prod_am">Je suis int&eacute;ress&eacute;(e) par cette formule</button>
+        <button class="cta cta-ghost cta-interest" data-track="prod_am" data-product-id="morning_formula">Je suis int&eacute;ress&eacute;(e) par cette formule</button>
       </div>
       <div class="gcard gcard-pm">
         <span class="gcard-timing t-pm">Soir</span>
@@ -896,7 +906,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
           <li>R&eacute;duction des courbatures post-effort</li>
           <li>Pr&eacute;servation de la masse maigre</li>
         </ul>
-        <button class="cta cta-ghost cta-interest" data-track="prod_pm">Je suis int&eacute;ress&eacute;(e) par cette formule</button>
+        <button class="cta cta-ghost cta-interest" data-track="prod_pm" data-product-id="evening_formula">Je suis int&eacute;ress&eacute;(e) par cette formule</button>
       </div>
     </div>
   </div>
@@ -931,7 +941,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
     </div>
     <!-- CTA after benefits -->
     <div class="benefices-cta">
-      <a class="cta" href="#acces">
+      <a class="cta" href="#acces" data-cta-location="benefits">
         S&rsquo;inscrire maintenant
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </a>
@@ -976,7 +986,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
     </div>
     <div class="sci-footer">
       <p class="sci-tagline">Ingr&eacute;dients brevet&eacute;s &nbsp;&middot;&nbsp; Dosages transparents &amp; naturels &nbsp;&middot;&nbsp; &eacute;tudes scientifiques valid&eacute;es &nbsp;&middot;&nbsp; Standards GMP europ&eacute;ens</p>
-      <a class="cta" href="#acces">Rejoindre l&rsquo;acc&egrave;s prioritaire <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a class="cta" href="#acces" data-cta-location="science">Rejoindre l&rsquo;acc&egrave;s prioritaire <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
   </div>
 </section>
@@ -1000,14 +1010,21 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
       </div>
       <div>
         <div class="form-box">
-          <form id="mainForm" novalidate>
+          <form id="mainForm" name="early-access-performance" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+            <input type="hidden" name="form-name" value="early-access-performance">
+            <input type="hidden" name="variant" value="A-performance">
+            <p hidden><label>Ne pas remplir&nbsp;: <input name="bot-field"></label></p>
+            <input type="hidden" name="utm_source">
+            <input type="hidden" name="utm_medium">
+            <input type="hidden" name="utm_campaign">
+            <input type="hidden" name="utm_content">
             <div class="fg"><label for="f-age">Votre tranche d&rsquo;&acirc;ge</label><select id="f-age" name="age"><option value="">S&eacute;lectionner&hellip;</option><option value="35-40">35&ndash;40 ans</option><option value="40-50">40&ndash;50 ans</option><option value="50-60">50&ndash;60 ans</option><option value="60+">60 ans et plus</option></select></div>
-            <div class="fg"><label for="f-sport">Fr&eacute;quence sportive</label><select id="f-sport" name="sport"><option value="">S&eacute;lectionner&hellip;</option><option value="1-2">1&ndash;2 fois par semaine</option><option value="3-4">3&ndash;4 fois par semaine</option><option value="5+">5 fois et plus</option></select></div>
-            <div class="fg"><label for="f-statut">Statut professionnel</label><select id="f-statut" name="statut"><option value="">S&eacute;lectionner&hellip;</option><option value="entrepreneur">Entrepreneur</option><option value="cadre">Cadre / manager</option><option value="liberal">Profession lib&eacute;rale</option><option value="salarie">Salari&eacute;</option><option value="retraite">Retrait&eacute;</option><option value="autre">Autre</option></select></div>
+            <div class="fg"><label for="f-sport">Fr&eacute;quence sportive</label><select id="f-sport" name="sport_frequency"><option value="">S&eacute;lectionner&hellip;</option><option value="1-2">1&ndash;2 fois par semaine</option><option value="3-4">3&ndash;4 fois par semaine</option><option value="5+">5 fois et plus</option></select></div>
+            <div class="fg"><label for="f-statut">Statut professionnel</label><select id="f-statut" name="professional_status"><option value="">S&eacute;lectionner&hellip;</option><option value="entrepreneur">Entrepreneur</option><option value="cadre">Cadre / manager</option><option value="liberal">Profession lib&eacute;rale</option><option value="salarie">Salari&eacute;</option><option value="retraite">Retrait&eacute;</option><option value="autre">Autre</option></select></div>
             <div class="fg"><label for="f-email">Adresse email</label><input type="email" id="f-email" name="email" placeholder="vous@email.com" required></div>
             <div class="checks">
-              <label class="chk"><input type="checkbox" id="chk-contact" name="contact" value="1"><span>J&rsquo;accepte d&rsquo;&ecirc;tre contact&eacute;(e) pour en savoir plus</span></label>
-              <label class="chk"><input type="checkbox" id="chk-earlybird" name="earlybird" value="1"><span>Je suis int&eacute;ress&eacute;(e) par une pr&eacute;commande / offre Early Bird</span></label>
+              <label class="chk"><input type="checkbox" id="chk-contact" name="contact_optin" value="1"><span>J&rsquo;accepte d&rsquo;&ecirc;tre contact&eacute;(e) pour en savoir plus</span></label>
+              <label class="chk"><input type="checkbox" id="chk-earlybird" name="earlybird_optin" value="1"><span>Je suis int&eacute;ress&eacute;(e) par une pr&eacute;commande / offre Early Bird</span></label>
             </div>
             <button type="submit" class="cta cta-submit">Rejoindre l&rsquo;acc&egrave;s prioritaire</button>
             <p class="form-legal">Donn&eacute;es utilis&eacute;es uniquement dans le cadre du lancement. Aucun d&eacute;marchage commercial.</p>
@@ -1035,17 +1052,45 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
   </div>
 </footer>
 
-<div class="toast" id="toast"><strong id="toast-msg">&ndash;</strong></div>
-
-<script>
-/* TRACKING */
-var _log=[],_tT=null;
-function track(ev,data){
-  var e=Object.assign({event:ev,ts:Date.now()},data||{});
-  _log.push(e);console.log('[P40]',e);
-  var t=document.getElementById('toast'),m=document.getElementById('toast-msg');
-  if(t&&m){m.textContent=ev.replace(/_/g,' ');t.classList.add('show');clearTimeout(_tT);_tT=setTimeout(function(){t.classList.remove('show');},2000);}
+<script id="app-script">
+/* ═══════════════════════════════════════════
+   TRACKING — GTM dataLayer
+   Toute interaction passe par track(), qui pousse
+   systématiquement dans window.dataLayer (jamais
+   uniquement en variable locale ou en console).
+═══════════════════════════════════════════ */
+window.dataLayer = window.dataLayer || [];
+function track(eventName, eventData){
+  var payload = Object.assign(
+    { event: eventName, variant: document.body.dataset.variant },
+    eventData || {}
+  );
+  window.dataLayer.push(payload);
+  console.log('[TRACK]', payload);
 }
+
+/* ═══════════════════════════════════════════
+   UTM CAPTURE — persistés en sessionStorage,
+   réinjectés dans les champs cachés du formulaire
+═══════════════════════════════════════════ */
+(function captureUTMs(){
+  var params = ['utm_source','utm_medium','utm_campaign','utm_content'];
+  var url = new URLSearchParams(window.location.search);
+  params.forEach(function(p){
+    var val = url.get(p);
+    if (val) { try { sessionStorage.setItem(p, val); } catch(e){} }
+  });
+  document.addEventListener('DOMContentLoaded', function(){
+    params.forEach(function(p){
+      var input = document.querySelector('input[name="' + p + '"]');
+      if (!input) return;
+      var stored = null;
+      try { stored = sessionStorage.getItem(p); } catch(e){}
+      if (stored) input.value = stored;
+    });
+  });
+})();
+
 /* SMOOTH SCROLL */
 var _reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function toAcces(e){
@@ -1055,29 +1100,30 @@ function toAcces(e){
   target.scrollIntoView({behavior:_reduceMotion?'auto':'smooth',block:'start'});
   setTimeout(function(){var el=target.querySelector('select,input[type=email]')||document.querySelector('#acces select,#acces input[type=email]');if(el)el.focus({preventScroll:true});},_reduceMotion?0:700);
 }
+
 /* INIT */
 document.addEventListener('DOMContentLoaded',function(){
-  /* All #acces CTAs */
+
+  /* CTA → #acces : un seul cta_click par clic, comportement de scroll inchangé */
   document.querySelectorAll('a[href="#acces"]').forEach(function(a){
-    a.addEventListener('click',function(e){track('cta',{label:a.textContent.trim().slice(0,32)});toAcces(e);});
+    a.addEventListener('click',function(e){
+      var loc = a.getAttribute('data-cta-location') || 'unknown';
+      track('cta_click', { cta_location: loc });
+      toAcces(e);
+    });
   });
-  /* Section views */
-  if('IntersectionObserver'in window){
-    var ob=new IntersectionObserver(function(es){
-      es.forEach(function(e){if(e.isIntersecting&&!e.target._s){e.target._s=true;track('view',{id:e.target.id});}});
-    },{threshold:.25});
-    document.querySelectorAll('section[id]').forEach(function(s){ob.observe(s);});
-  }
+
   /* Problem stat accordion */
   document.querySelectorAll('.pb-stat').forEach(function(card){
     function tog(){
       var was=card.classList.contains('open');
       document.querySelectorAll('.pb-stat').forEach(function(c){c.classList.remove('open');c.setAttribute('aria-expanded','false');});
-      if(!was){card.classList.add('open');card.setAttribute('aria-expanded','true');var h=card.querySelector('h3');track('diag',{t:h?h.textContent:''});}
+      if(!was){card.classList.add('open');card.setAttribute('aria-expanded','true');}
     }
     card.addEventListener('click',tog);
     card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});
   });
+
   /* Benefit tabs */
   document.querySelectorAll('.btab').forEach(function(btn){
     btn.addEventListener('click',function(){
@@ -1086,43 +1132,142 @@ document.addEventListener('DOMContentLoaded',function(){
       document.querySelectorAll('.bpanel').forEach(function(p){p.classList.remove('on');});
       btn.classList.add('on');btn.setAttribute('aria-selected','true');
       var panel=document.getElementById(tid);if(panel)panel.classList.add('on');
-      track('benefit',{tab:tid});
     });
   });
+
   /* Science expand */
   document.querySelectorAll('.sci-card').forEach(function(card){
     function togS(){
       var o=card.classList.toggle('open');
       var b=card.querySelector('.sci-expand-btn');if(b)b.setAttribute('aria-expanded',o?'true':'false');
-      var h=card.querySelector('h3');track('sci',{open:o,t:h?h.textContent.trim():''});
     }
     card.addEventListener('click',togS);
     card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();togS();}});
   });
-  /* Interest buttons */
+
+  /* Product interest buttons → product_interest (un seul événement par clic) */
   document.querySelectorAll('.cta-interest').forEach(function(btn){
     btn.addEventListener('click',function(){
       if(btn.classList.contains('done'))return;
       btn.classList.add('done');btn.textContent='Int\u00e9r\u00eat not\u00e9 \u2713';
-      track('interest',{id:btn.getAttribute('data-track')});
+      var pid = btn.getAttribute('data-product-id');
+      if (pid) track('product_interest', { product_id: pid });
     });
   });
-  /* Form */
-  var form=document.getElementById('mainForm');
-  if(form){
-    form.addEventListener('submit',function(e){
+
+  /* ── Formulaire : vue / démarrage / early bird / soumission Netlify ── */
+  var form = document.getElementById('mainForm');
+  if (form) {
+    var formBox = form.closest('.form-box') || form;
+
+    /* form_view : une fois, dès que ≥50% du formulaire est visible */
+    var viewed = false;
+    if ('IntersectionObserver' in window) {
+      var viewObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting && !viewed) {
+            viewed = true;
+            track('form_view');
+            viewObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      viewObserver.observe(formBox);
+    }
+
+    /* form_start : une fois, à la première interaction réelle avec un champ */
+    var started = false;
+    function markStarted(){
+      if (started) return;
+      started = true;
+      track('form_start');
+    }
+    form.querySelectorAll('input, select, textarea').forEach(function(field){
+      field.addEventListener('focus', markStarted, { once:true });
+      field.addEventListener('input', markStarted, { once:true });
+    });
+
+    /* earlybird_select : une fois, uniquement au passage décoché → coché */
+    var earlybirdSent = false;
+    var earlybirdBox = document.getElementById('chk-earlybird');
+    if (earlybirdBox) {
+      earlybirdBox.addEventListener('change', function(){
+        if (earlybirdBox.checked && !earlybirdSent) {
+          earlybirdSent = true;
+          track('earlybird_select', { selected: true });
+        }
+      });
+    }
+
+    /* Soumission réelle vers Netlify Forms via fetch */
+    var submitBtn = form.querySelector('.cta-submit');
+    var submitting = false;
+
+    function showFormError(){
+      var err = form.querySelector('.form-error');
+      if (!err) {
+        err = document.createElement('p');
+        err.className = 'form-error';
+        err.setAttribute('role','alert');
+        err.style.color = '#c0392b';
+        err.style.fontSize = '.8rem';
+        err.style.marginTop = '.75rem';
+        form.appendChild(err);
+      }
+      err.textContent = 'Une erreur est survenue lors de l\u2019envoi. Merci de r\u00e9essayer.';
+    }
+
+    form.addEventListener('submit', function(e){
       e.preventDefault();
-      var g=function(id){return(document.getElementById(id)||{}).value||'';};
-      var chk=function(id){return((document.getElementById(id)||{}).checked)||false;};
-      var email=g('f-email');
-      track('form_submit',{age:g('f-age'),sport:g('f-sport'),statut:g('f-statut'),contact:chk('chk-contact'),earlybird:chk('chk-earlybird'),domain:email.indexOf('@')>-1?email.split('@')[1]:''});
-      form.style.display='none';
-      var msg=document.getElementById('successMsg');if(msg)msg.style.display='block';
+      if (submitting) return;
+      submitting = true;
+      if (submitBtn) { submitBtn.disabled = true; }
+
+      var formData = new FormData(form);
+      var body = new URLSearchParams(formData).toString();
+
+      fetch(window.location.pathname || '/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body
+      }).then(function(res){
+        if (!res.ok) throw new Error('Netlify Forms error: ' + res.status);
+        /* email jamais envoyé au dataLayer / GTM / GA */
+        track('form_submit', {
+          age_band: formData.get('age'),
+          sport_frequency: formData.get('sport_frequency'),
+          professional_status: formData.get('professional_status'),
+          contact_optin: formData.get('contact_optin') !== null,
+          earlybird_optin: formData.get('earlybird_optin') !== null
+        });
+        form.style.display = 'none';
+        var msg = document.getElementById('successMsg');
+        if (msg) msg.style.display = 'block';
+      }).catch(function(){
+        submitting = false;
+        if (submitBtn) { submitBtn.disabled = false; }
+        showFormError();
+      });
     });
   }
 });
 
-
+/* ── scroll_depth 50% (une seule fois, ne se répète pas en remontant) ── */
+(function(){
+  var fired = false;
+  function checkScroll(){
+    if (fired) return;
+    var scrolled = window.scrollY + window.innerHeight;
+    var full = document.documentElement.scrollHeight;
+    if (full > 0 && (scrolled / full) >= 0.5) {
+      fired = true;
+      track('scroll_depth', { percent: 50 });
+      window.removeEventListener('scroll', checkScroll);
+    }
+  }
+  window.addEventListener('scroll', checkScroll, { passive:true });
+  checkScroll();
+})();
 
 /* ── bcard mobile wrapper ── */
 (function(){
@@ -1145,7 +1290,6 @@ document.querySelectorAll('.sci-ingr-btn').forEach(function(btn){
     var card=btn.closest('.sci-card');
     var open=card.classList.toggle('ingr-open');
     btn.setAttribute('aria-expanded',open?'true':'false');
-    track('sci_ingr',{open:open});
   });
   btn.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();btn.click();}});
 });
@@ -1156,7 +1300,6 @@ document.querySelectorAll('.gcard-acc-btn').forEach(function(btn){
     var card=btn.closest('.gcard');
     var open=card.classList.toggle('acc-open');
     btn.setAttribute('aria-expanded',open?'true':'false');
-    track('gamme_ben',{open:open});
   });
   btn.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();btn.click();}});
 });

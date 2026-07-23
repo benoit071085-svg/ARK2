@@ -243,9 +243,6 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 .foot-note{font-size:.7rem;color:rgba(255,255,255,.18)}
 
 /* TOAST */
-.toast{position:fixed;bottom:1rem;right:1rem;background:rgba(15,20,16,.95);color:var(--white);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.5rem .95rem;font-size:.72rem;font-family:var(--body);opacity:0;transform:translateY(5px);transition:opacity .22s,transform .22s;pointer-events:none;z-index:200;white-space:nowrap}
-.toast.show{opacity:1;transform:translateY(0)}
-.toast strong{color:#72B891}
 
 /* ══════════════════════════════════════
    RESPONSIVE — mobile-first

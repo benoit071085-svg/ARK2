@@ -3,6 +3,24 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v8 — 2026-07-23
+
+**Commun** (shared/script.js + shared/styles.css) + éléments spécifiques identiques en structure dans les 2 fichiers (variante, nom de formulaire, product_id)
+
+Implémentation du tracking Google Tag Manager (`GTM-NPKVG7JS`), du stockage de formulaire Netlify Forms et des paramètres de test A/B.
+
+- **GTM** : snippet officiel installé dans `<head>` et `<noscript>` après `<body>`. Aucun `gtag.js` direct — GA4 (`G-FECB9TXHZ6`) sera configuré à l'intérieur de GTM.
+- **Variante** : `data-variant="A-performance"` / `"B-recovery"` sur `<body>`, automatiquement incluse dans chaque événement via `track()`.
+- **dataLayer** : nouvelle fonction `track(eventName, eventData)` qui pousse systématiquement dans `window.dataLayer` (plus jamais uniquement en variable locale/console). Remplace l'ancien système de tracking local (toast de notification + variable `_log`), désormais supprimé avec son CSS mort.
+- **Événements** : `cta_click` (via `data-cta-location` sur chaque CTA : nav/hero/problem/concept/benefits/science), `product_interest` (via `data-product-id` sur les boutons Gamme), `form_view` (IntersectionObserver, 50%, une fois), `form_start` (première interaction, une fois), `earlybird_select` (décoché→coché uniquement, une fois), `form_submit` (après succès Netlify uniquement, email jamais inclus), `scroll_depth` à 50% (une fois).
+- **Formulaire → Netlify Forms** : `data-netlify="true"`, honeypot `bot-field`, noms de formulaire distincts (`early-access-performance` / `early-access-recovery`), soumission réelle via `fetch` en `application/x-www-form-urlencoded`, bouton désactivé pendant l'envoi, message de succès affiché uniquement après réponse HTTP réussie, message d'erreur si échec.
+- **UTM** : `utm_source/medium/campaign/content` lus dans l'URL, stockés en `sessionStorage`, réinjectés dans des champs cachés à chaque page vue (valeur conservée si absente de l'URL).
+- **Champs renommés** : `sport`→`sport_frequency`, `statut`→`professional_status`, `contact`→`contact_optin`, `earlybird`→`earlybird_optin` (labels, id, options inchangés).
+
+**Bug découvert et corrigé pendant cette version** : un second bloc `<script>` legacy (dupliqué, jamais nettoyé depuis la v1) tournait en parallèle du script partagé, provoquant un risque réel de double-listeners. Il a été supprimé ; `scripts/sync.py` cible désormais le script applicatif via un `id="app-script"` explicite plutôt que par position, pour empêcher que ce type de bug ne se reproduise silencieusement.
+
+Toutes les animations, tabs et accordéons sont strictement conservés (comportement UI inchangé, seuls les appels de tracking ad-hoc qui leur étaient attachés ont été retirés). Aucun texte, image ou ordre de section modifié — vérifié par comparaison de contenu.
+
 ## v7 — 2026-07-23
 
 **Commun** (shared/styles.css, propagé aux 2 pages) + suppression identique du titre Comparaison dans les 2 fichiers
