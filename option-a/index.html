@@ -42,7 +42,7 @@ h4{font-size:.875rem;font-weight:600;line-height:1.4;color:var(--ink)}
 p,li{font-size:.9375rem;color:var(--muted);line-height:1.72}
 .lead{font-size:1.05rem;color:var(--ink-soft);line-height:1.75}
 strong{font-weight:600;color:var(--ink)}
-.eyebrow{display:block;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:1.1rem}
+.eyebrow{display:block;font-size:13px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:1.2rem}
 
 /* ══════════════════════════════════════
    BUTTONS — one system
@@ -140,8 +140,7 @@ section[id]{scroll-margin-top:76px}
    4. COMPARE — standalone section
 ══════════════════════════════════════ */
 #compare{background:var(--cream);padding:var(--py) 0}
-.compare-head{margin-bottom:2.25rem;max-width:660px}
-.compare-head h2{margin-bottom:0}
+.compare-head{margin-bottom:.9rem;max-width:660px}
 .compare-img{border-radius:var(--r16);overflow:hidden;box-shadow:var(--shadow-lg)}
 .compare-img img{width:100%;height:auto;display:block}
 
@@ -280,7 +279,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
   #hero h1 em{display:block}
   .concept-inner{max-width:100%}
   #concept h2{font-size:clamp(1.65rem,7vw,2.2rem)}
-  .compare-head h2{font-size:clamp(1.5rem,6.5vw,2rem)}
+  .compare-head{margin-bottom:.75rem}
 }
 @media(max-width:480px){
   h2{font-size:clamp(1.5rem,6vw,1.85rem)}
@@ -379,13 +378,9 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
   #benefices .btabs{margin:.7rem 0 1rem}
   #benefices .benefices-cta{margin-top:1.25rem}
 
-  /* Compact bpanel: single white card, rows not columns — overrides grid */
+  /* Compact bpanel: rows not columns, no card background — overrides grid */
   .bpanel.on{
     display:block!important;
-    background:var(--white);
-    border-radius:var(--r12);
-    border:1px solid var(--border);
-    overflow:hidden;
   }
   .bcard{
     display:flex;align-items:flex-start;gap:.75rem;
@@ -545,10 +540,6 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
   #benefices .btabs{margin:.6rem 0 .9rem}
   .bpanel.on{
     display:block!important;
-    background:var(--white);
-    border-radius:var(--r12);
-    border:1px solid var(--border);
-    overflow:hidden;
   }
   .bcard{
     display:flex;align-items:flex-start;gap:.7rem;
@@ -723,19 +714,11 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 @media(min-width:901px){
 
   /* 1. Intitulés de section — nettement plus visibles */
-  .eyebrow{font-size:14px;margin-bottom:1.4rem}
+  .eyebrow{font-size:16px;margin-bottom:1.5rem}
 
   /* 2. Diagnostic — l'intro utilise toute la largeur du conteneur,
         même point de départ que les 3 chiffres en dessous */
   .pb-header{max-width:none}
-
-  /* 3. Comparaison — seule section centrée, au-dessus du graphique */
-  .compare-head{
-    max-width:680px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align:center;
-  }
 
   /* 4. Gamme — intro alignée sur toute la largeur des 2 cartes */
   #gamme>.wrap>.eyebrow,
@@ -800,7 +783,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
     <span class="eyebrow">Le diagnostic</span>
     <div class="pb-header">
       <h2>Votre entra&icirc;nement n&rsquo;a pas chang&eacute;.<br>Votre corps, si.</h2>
-      <p class="lead" style="margin-top:.9rem">Vous continuez &agrave; vous entra&icirc;ner.</p>
+      <p style="margin-top:.9rem">Vous continuez &agrave; vous entra&icirc;ner.</p>
       <p style="margin-top:.65rem">Parce que le sport vous aide &agrave; rester en forme, mieux dormir, &eacute;vacuer le stress et donner le meilleur de vous-m&ecirc;me au quotidien.</p>
       <p style="margin-top:.65rem">Mais apr&egrave;s 40 ans, votre corps vous rappelle que les r&egrave;gles ont chang&eacute;. Les m&ecirc;mes efforts ne produisent plus les m&ecirc;mes b&eacute;n&eacute;fices.</p>
       <p style="margin-top:.65rem">Des douleurs, des blessures, une frustration ou une fatigue peuvent s&rsquo;installer sans qu&rsquo;on en comprenne la raison.</p>
@@ -868,7 +851,6 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
   <div class="wrap">
     <div class="compare-head">
       <span class="eyebrow">Deux approches. Deux visions. Deux r&eacute;sultats.</span>
-      <h2>Nutrition sportive traditionnelle<br>vs Nutrition sportive 40+</h2>
     </div>
     <div class="ct-img-wrap">
       <img

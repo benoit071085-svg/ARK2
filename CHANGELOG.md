@@ -3,6 +3,18 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v7 — 2026-07-23
+
+**Commun** (shared/styles.css, propagé aux 2 pages) + suppression identique du titre Comparaison dans les 2 fichiers
+
+- **Bénéfices (mobile uniquement)** : suppression du fond blanc derrière les 3 bénéfices (fond de section conservé, séparateurs/icônes/textes conservés). Desktop non touché.
+- **Diagnostic** : « Vous continuez à vous entraîner. » utilise désormais exactement la même typographie (police, taille, poids, couleur, interligne) que le paragraphe suivant — classe `.lead` retirée.
+- **Comparaison — alignement** : retour à un alignement à gauche (annule le centrage de v6), même point de départ que les autres intitulés.
+- **Comparaison — titre supprimé** : le titre « Nutrition sportive traditionnelle vs Nutrition sportive 40+ » est retiré (seul texte supprimé dans cette version, demandé explicitement). L'espace intitulé → tableau est fortement réduit. Le tableau lui-même est inchangé.
+- **Intitulés de section** : nettement plus visibles, desktop **et** mobile cette fois (13px mobile / 16px desktop, contre 12px/14px en v6).
+
+Vérifié par comparaison de contenu : seuls les deux mots du titre Comparaison ont été retirés (volontairement) — aucun autre texte, aucune image, aucun changement d'ordre des sections. Le tableau comparatif n'a pas été modifié.
+
 ## v6 — 2026-07-23
 
 **Commun** (shared/styles.css, propagé aux 2 pages) + restructuration HTML identique dans les 2 fichiers
