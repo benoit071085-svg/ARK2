@@ -3,6 +3,20 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v3 — 2026-07-23
+
+**Commun**
+- Réorganisation pour déploiement Netlify connecté au repo GitHub :
+  - Option A déplacée de `index.html` vers `option-a/index.html`
+  - Nouvelle page racine `index.html` : sélecteur simple avec 2 boutons
+    (Option A / Option B)
+  - `scripts/sync.py` mis à jour pour cibler `option-a/index.html`
+- Aucun texte, design, contenu ou animation modifié dans A ou B — vérifié
+  par comparaison de contenu avant/après déplacement
+- Vérification : les 2 pages sont 100% autonomes (CSS/JS/images inlinés,
+  seule dépendance externe = Google Fonts en URL absolue) — aucun chemin
+  relatif à corriger
+
 ## v2 — 2026-07-23
 
 **Commun**

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Synchronise shared/styles.css et shared/script.js vers index.html (Option A)
-et option-b/index.html (Option B).
+Synchronise shared/styles.css et shared/script.js vers option-a/index.html
+et option-b/index.html.
 
 Usage : python3 scripts/sync.py
 
@@ -22,7 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SHARED_CSS = ROOT / "shared" / "styles.css"
 SHARED_JS = ROOT / "shared" / "script.js"
-TARGETS = [ROOT / "index.html", ROOT / "option-b" / "index.html"]
+TARGETS = [ROOT / "option-a" / "index.html", ROOT / "option-b" / "index.html"]
 
 
 def sync_file(path: Path, shared_css: str, shared_js: str) -> bool:
