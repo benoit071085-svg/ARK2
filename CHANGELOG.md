@@ -3,6 +3,21 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v11 — 2026-07-23
+
+**Commun** (shared/script.js, propagé aux 2 pages)
+
+- Ajout du paramètre `variant` (`A-performance` / `B-recovery`) sur les 7 événements GA4 personnalisés : `cta_click`, `product_interest`, `form_view`, `form_start`, `earlybird_select`, `form_submit`, `scroll_depth`. Valeur lue depuis `document.body.dataset.variant`, aucune autre modification.
+
+**Checklist de vérification demandée — tout confirmé** :
+1. `gtag.js` (G-FECB9TXHZ6) chargé une seule fois par page, `gtag('config', ...)` appelé une seule fois
+2. Aucune trace de GTM ni de `dataLayer`/`track()` personnalisé
+3. Formulaires avec noms Netlify uniques (`early-access-performance` / `early-access-recovery`)
+4. `new FormData(form)` inclut le champ caché `form-name` dans le payload AJAX envoyé à Netlify
+5. `form_submit` déclenché uniquement dans le `.then()` après vérification `res.ok`
+6. Email jamais référencé dans aucun appel `gtag()`
+7. product_id exacts : A = `morning_formula` / `evening_formula` · B = `post_workout_recovery` / `overnight_recovery`
+
 ## v10 — 2026-07-23
 
 **Commun** (shared/script.js, propagé aux 2 pages) + product_id corrigés dans option-b/index.html

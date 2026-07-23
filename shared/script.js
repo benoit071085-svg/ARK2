@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded',function(){
     if (a.tagName !== 'A') return; // garde-fou explicite, ne cible jamais un bouton
     a.addEventListener('click',function(e){
       var loc = a.getAttribute('data-cta-location') || 'unknown';
-      gtag('event', 'cta_click', { cta_location: loc });
+      gtag('event', 'cta_click', { cta_location: loc, variant: document.body.dataset.variant });
       toAcces(e);
     });
   });
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded',function(){
       if(btn.classList.contains('done'))return;
       btn.classList.add('done');btn.textContent='Int\u00e9r\u00eat not\u00e9 \u2713';
       var pid = btn.getAttribute('data-product-id');
-      if (pid) gtag('event', 'product_interest', { product_id: pid });
+      if (pid) gtag('event', 'product_interest', { product_id: pid, variant: document.body.dataset.variant });
     });
   });
 
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded',function(){
         entries.forEach(function(entry){
           if (entry.isIntersecting && !viewed) {
             viewed = true;
-            gtag('event', 'form_view');
+            gtag('event', 'form_view', { variant: document.body.dataset.variant });
             viewObserver.disconnect();
           }
         });
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded',function(){
     function markStarted(){
       if (started) return;
       started = true;
-      gtag('event', 'form_start');
+      gtag('event', 'form_start', { variant: document.body.dataset.variant });
     }
     form.querySelectorAll('input, select, textarea').forEach(function(field){
       field.addEventListener('focus', markStarted, { once:true });
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded',function(){
       earlybirdBox.addEventListener('change', function(){
         if (earlybirdBox.checked && !earlybirdSent) {
           earlybirdSent = true;
-          gtag('event', 'earlybird_select');
+          gtag('event', 'earlybird_select', { variant: document.body.dataset.variant });
         }
       });
     }
@@ -180,7 +180,8 @@ document.addEventListener('DOMContentLoaded',function(){
         gtag('event', 'form_submit', {
           age: formData.get('age'),
           sport_frequency: formData.get('sport_frequency'),
-          professional_status: formData.get('professional_status')
+          professional_status: formData.get('professional_status'),
+          variant: document.body.dataset.variant
         });
         form.style.display = 'none';
         var msg = document.getElementById('successMsg');
@@ -203,7 +204,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var full = document.documentElement.scrollHeight;
     if (full > 0 && (scrolled / full) >= 0.5) {
       fired = true;
-      gtag('event', 'scroll_depth', { percent: 50 });
+      gtag('event', 'scroll_depth', { percent: 50, variant: document.body.dataset.variant });
       window.removeEventListener('scroll', checkScroll);
     }
   }
