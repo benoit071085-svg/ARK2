@@ -3,6 +3,19 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v13 — 2026-07-23
+
+**Commun** (shared/script.js + tête/attribut identiques dans les 2 fichiers)
+
+Propage `variant` aux événements automatiques GA4 (`page_view`, `session_start`, `first_visit`, `user_engagement`, `scroll`), en plus des 7 événements personnalisés qui l'avaient déjà.
+
+- **Source unique** : l'attribut `data-variant` déplacé de `<body>` vers `<html>` (`<html lang="fr" data-variant="A-performance">` / `"B-recovery"`). `<html>` existe dès le tout premier octet parsé par le navigateur, donc disponible immédiatement dans `<head>`.
+- **`gtag('config', ...)` reste exactement à sa position officielle Google dans `<head>`** — aucun code déplacé, aucun changement de timing, donc aucun risque sur `page_view`, Enhanced Measurement, ou un futur Consent Mode. Il transporte désormais `{ 'variant': document.documentElement.dataset.variant }`, ce qui alimente automatiquement tous les événements internes de GA4.
+- Les 7 `gtag('event', ...)` personnalisés (`cta_click`, `product_interest`, `form_view`, `form_start`, `form_submit`, `earlybird_select`, `scroll_depth`) lisent désormais `document.documentElement.dataset.variant` au lieu de `document.body.dataset.variant` — comportement strictement identique, vérifié par exécution réelle (jsdom) sur les 2 pages avant commit.
+- Recherche exhaustive effectuée avant modification : exactement 7 références de code + 2 emplacements d'attribut dans tout le projet, aucune référence oubliée.
+
+Aucun texte, image, ordre de section, nom d'événement ou logique de tracking existante modifié — vérifié par comparaison de contenu et par test fonctionnel réel. Aucun doublon introduit (un seul objet de paramètres ajouté à l'appel `config` existant).
+
 ## v12 — 2026-07-23
 
 **Audit complet de l'implémentation GA4** suite à un signalement : aucune requête `google-analytics.com/g/collect` visible, aucun utilisateur en Realtime.
