@@ -3,6 +3,17 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v14 — 2026-07-24
+
+**Uniquement `index.html` (racine)** — nouvelle page "Coming Soon" premium, indépendante des landing pages A/B.
+
+- Remplace le sélecteur simple (2 boutons) par une page teaser éditoriale : composition photo 50/50 (cycliste + coureuse, même poids visuel), traitement N&B harmonisé (même recette : niveaux, gamma, courbe de contraste appliquée identiquement aux 2 photos pour un rendu "même campagne"), typographie Fraunces (titre) + Inter (corps), palette entièrement monochrome.
+- Titre, sous-titre et footer conformes exactement au texte fourni.
+- Itération suite retours : dégradé discret en bas des photos (transition vers le fond blanc), hauteur du spread photo réduite d'~13%, bloc texte remonté, hiérarchie desktop/mobile vérifiée.
+- Une seule dépendance externe : Google Fonts (comme le reste du site). Fichier autonome (images en base64), aucun changement de build/déploiement.
+
+**Vérifié avant commit** : `option-a/index.html`, `option-b/index.html` et `shared/` strictement identiques au commit précédent (diff `git diff --quiet` confirmé vide sur les 3). Aucun impact sur les landing pages, le tracking GA4, l'A/B test, ou la configuration Netlify.
+
 ## v13 — 2026-07-23
 
 **Commun** (shared/script.js + tête/attribut identiques dans les 2 fichiers)
