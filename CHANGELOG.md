@@ -3,6 +3,23 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v16 — 2026-07-24
+
+**Option A** (contenu) + **shared/styles.css + shared/script.js** (composant CSS/JS propagé aux 2 pages, inerte sur Option B qui ne l'utilise pas)
+
+Déploiement des changements validés en aperçu (territoire "Performance Durable 40+"), par-dessus v15 (Science & Crédibilité + champ Homme/Femme, préservés) :
+
+- **Hero** : label restylé en `.eyebrow` ("Nutrition de performance durable 40+"), sous-titre mis à jour (mention femmes/hommes).
+- **Diagnostic — intro** : paragraphes 3 et 4 mis à jour (nuance "toujours", nouvelle phrase communs/spécifiques).
+- **Diagnostic — nouvelles cartes** : remplace les 3 anciennes cartes par Commun 40+ / ♀ Femmes / ♂ Hommes, même composant visuel `.pb-stat` (animations conservées). Mobile : bascule par onglets (évite l'empilement de 3 cartes longues), Commun 40+ affiché par défaut.
+- **Tableau comparatif** : supprimé entièrement d'Option A (contenu, container, espace résiduel). La règle CSS `#compare` est conservée dans `shared/` car Option B utilise toujours cette section.
+- **Gamme** : texte d'intro mis à jour (besoins physiologiques spécifiques).
+- **Footer** : Pilier 1 → "Performance Durable 40+", Pilier 3 → "Approche Continue" / "Accompagnement physiologie 7j/7". Piliers 2 et 4 inchangés.
+- **Concept, Bénéfices** : strictement identiques (vérifié).
+- **Science & Crédibilité, formulaire (champ Homme/Femme)** : préservés tels que déployés en v15.
+
+**Vérifié avant commit** : contenu HTML d'Option B strictement inchangé (seuls les blocs `<style>`/`<script>` partagés ont été resynchronisés) ; syntaxe CSS/JS valide sur les 2 fichiers ; Concept et Bénéfices d'Option A byte-identiques à v15.
+
 ## v15 — 2026-07-24
 
 **Option A uniquement** (`option-a/index.html`) — 2 modifications ciblées, aucun autre fichier touché.

@@ -148,6 +148,48 @@ section[id]{scroll-margin-top:76px}
 /* ══════════════════════════════════════
    4. COMPARE — standalone section
 ══════════════════════════════════════ */
+/* ══════════════════════════════════════
+   DIAGNOSTIC — multi-cartes Commun / Femmes / Hommes
+   (utilisé par Option A ; classes inertes si absentes du HTML d'une page)
+══════════════════════════════════════ */
+.hero-territory{display:flex;align-items:center}
+.pb-stat-label{
+  display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;
+  font-family:var(--display);
+  font-size:.95rem;font-weight:800;
+  color:var(--green);
+  margin-bottom:.9rem;
+}
+.pb-stat-plus{
+  font-style:normal;
+  font-size:.6rem;
+  font-weight:600;
+  letter-spacing:.03em;
+  color:var(--muted);
+  text-transform:uppercase;
+  background:rgba(42,92,66,.08);
+  padding:.15rem .5rem;
+  border-radius:100px;
+}
+.pb-stat-rows{display:flex;flex-direction:column;gap:.65rem;margin-bottom:.2rem}
+.pb-stat-row{display:flex;align-items:flex-start;gap:.55rem}
+.pb-arrow{font-family:var(--display);font-weight:800;font-size:1rem;line-height:1.35;flex-shrink:0;width:1rem;color:var(--green)}
+.pb-stat-row strong{display:block;font-size:.8rem;font-weight:600;color:var(--ink);line-height:1.3}
+.pb-stat-value{display:block;font-size:.76rem;color:var(--muted);margin-top:.1rem}
+
+.pb-difftabs{display:none}
+@media(max-width:640px){
+  .pb-difftabs{display:flex;gap:.4rem;margin-bottom:1rem}
+  .pb-difftab{
+    flex:1;font-family:var(--body);font-size:.72rem;font-weight:600;
+    padding:.6rem .3rem;border:1px solid var(--border);border-radius:8px;
+    background:transparent;color:var(--muted);cursor:pointer;text-align:center;
+  }
+  .pb-difftab.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .pb-diag-card{display:none}
+  .pb-diag-card.pb-active{display:flex}
+}
+
 #compare{background:var(--cream);padding:var(--py) 0}
 .compare-head{margin-bottom:.9rem;max-width:660px}
 .compare-img{border-radius:var(--r16);overflow:hidden;box-shadow:var(--shadow-lg)}
@@ -1096,6 +1138,19 @@ document.addEventListener('DOMContentLoaded',function(){
       var loc = a.getAttribute('data-cta-location') || 'unknown';
       gtag('event', 'cta_click', { cta_location: loc, variant: document.documentElement.dataset.variant });
       toAcces(e);
+    });
+  });
+
+  /* Diagnostic multi-cartes : bascule d'onglet mobile (Commun/Femmes/Hommes),
+     classes inertes si la page n'a pas ce composant (ex: Option B) */
+  document.querySelectorAll('.pb-difftab').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      document.querySelectorAll('.pb-difftab').forEach(function(b){b.classList.remove('on');b.setAttribute('aria-selected','false');});
+      document.querySelectorAll('.pb-diag-card').forEach(function(c){c.classList.remove('pb-active');});
+      btn.classList.add('on');btn.setAttribute('aria-selected','true');
+      var target = document.getElementById(btn.getAttribute('data-target'));
+      if(target) target.classList.add('pb-active');
     });
   });
 

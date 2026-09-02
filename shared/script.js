@@ -55,6 +55,19 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
+  /* Diagnostic multi-cartes : bascule d'onglet mobile (Commun/Femmes/Hommes),
+     classes inertes si la page n'a pas ce composant (ex: Option B) */
+  document.querySelectorAll('.pb-difftab').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      document.querySelectorAll('.pb-difftab').forEach(function(b){b.classList.remove('on');b.setAttribute('aria-selected','false');});
+      document.querySelectorAll('.pb-diag-card').forEach(function(c){c.classList.remove('pb-active');});
+      btn.classList.add('on');btn.setAttribute('aria-selected','true');
+      var target = document.getElementById(btn.getAttribute('data-target'));
+      if(target) target.classList.add('pb-active');
+    });
+  });
+
   /* Problem stat accordion (comportement UI uniquement) */
   document.querySelectorAll('.pb-stat').forEach(function(card){
     function tog(){
