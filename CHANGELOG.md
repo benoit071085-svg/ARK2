@@ -3,6 +3,18 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v15 — 2026-07-24
+
+**Option A uniquement** (`option-a/index.html`) — 2 modifications ciblées, aucun autre fichier touché.
+
+1. **Science & Crédibilité** :
+   - Suppression des textes entre parenthèses dans les titres des 4 cartes (contenu, ingrédients, animations, design inchangés).
+   - Quadrant supérieur droit (2e carte) : nouveau titre *"Réparer les fibres musculaires et articulaires"*, nouvelle ligne bénéfice *"→ Synthèse musculaire · Récupération tissus & articulations"*. Ingrédients (Glutamine, Glycine, Créatine Creapure®) strictement inchangés.
+2. **Formulaire** : ajout du champ *"Vous êtes"* (Homme/Femme), même composant `<select>` que les autres champs, inséré après "Votre tranche d'âge". Aucun champ existant modifié (wording, ordre, design, fonctionnement).
+   - Collecte : aucune modification de `shared/script.js` nécessaire — `new FormData(form)` capture automatiquement tout champ nommé du formulaire, donc `gender` est déjà inclus dans la soumission Netlify Forms sans toucher au tracking existant.
+
+**Vérifié avant commit** : diff Git limité à `option-a/index.html` uniquement ; Hero, Diagnostic, Concept, Gamme, Bénéfices et Footer strictement identiques (comparaison automatisée) ; `option-b/`, `shared/`, `scripts/`, racine non touchés.
+
 ## v14 — 2026-07-24
 
 **Uniquement `index.html` (racine)** — nouvelle page "Coming Soon" premium, indépendante des landing pages A/B.
