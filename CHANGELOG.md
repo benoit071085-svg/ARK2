@@ -3,6 +3,20 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v17 — 2026-07-24
+
+**Diagnostic — optimisation UX mobile uniquement** (Option A). Desktop strictement inchangé (aucune règle en dehors de `@media(max-width:640px)` touchée, hormis un ajout global d'accessibilité sans impact visuel — voir plus bas).
+
+- **Tabs → segmented control** : les 3 tabs Commun 40+/Femmes/Hommes regroupés dans un seul composant compact (fond `--off`, tab actif en vert plein, tabs inactifs sans bordure lourde), au lieu de 3 boutons indépendants.
+- **Header redondant supprimé** : le sous-titre "♂ Hommes + spécifique" sous les tabs est masqué sur mobile (le tab actif suffit à indiquer la catégorie). Toujours visible sur desktop.
+- **3 enjeux restructurés** : lignes compactes séparées par un filet fin (inspiré de la section Bénéfices), sans nouvelle carte ni fond ajouté.
+- **Flèches intégrées au texte** : `↓`/`↑` maintenant accolées au libellé ("Testostérone ↓") au lieu d'être détachées à gauche — réalisé via attributs `data-arrow` (additifs, sans impact desktop) et CSS `::after`, aucune donnée modifiée.
+- **"En savoir plus"** : plus discret (taille/poids réduits), séparé par un filet léger, contenu et comportement (fermé par défaut) inchangés.
+- **Hauteur réduite** : suppression du padding de carte externe au profit d'un padding par ligne plus compact.
+- **Transition de tab** : léger fondu (0.2s), avec prise en compte de `prefers-reduced-motion` (ajout d'`animation-duration` à la règle globale existante — protection d'accessibilité supplémentaire, aucun changement visuel pour les autres utilisateurs).
+
+**Vérifié avant commit** : aucune règle CSS de base (desktop) touchée pour `.pb-stat`, `.pb-stat-label`, `.pb-stat-rows`, `.pb-arrow` (diff Git limité au bloc mobile) ; texte visible d'Option A strictement identique avant/après ; Hero, Concept, Gamme, Bénéfices, Science, Accès byte-identiques ; contenu HTML d'Option B inchangé (CSS additive inerte uniquement).
+
 ## v16 — 2026-07-24
 
 **Option A** (contenu) + **shared/styles.css + shared/script.js** (composant CSS/JS propagé aux 2 pages, inerte sur Option B qui ne l'utilise pas)

@@ -159,15 +159,62 @@ section[id]{scroll-margin-top:76px}
 
 .pb-difftabs{display:none}
 @media(max-width:640px){
-  .pb-difftabs{display:flex;gap:.4rem;margin-bottom:1rem}
-  .pb-difftab{
-    flex:1;font-family:var(--body);font-size:.72rem;font-weight:600;
-    padding:.6rem .3rem;border:1px solid var(--border);border-radius:8px;
-    background:transparent;color:var(--muted);cursor:pointer;text-align:center;
+  /* Segmented control — un seul composant à 3 options, pas 3 boutons séparés */
+  .pb-difftabs{
+    display:flex;gap:2px;
+    background:var(--off);
+    border-radius:10px;
+    padding:2px;
+    margin-bottom:.9rem;
   }
-  .pb-difftab.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .pb-difftab{
+    flex:1;font-family:var(--body);font-size:.7rem;font-weight:600;
+    padding:.5rem .3rem;border:none;border-radius:8px;
+    background:transparent;color:var(--muted);cursor:pointer;text-align:center;
+    transition:background .15s,color .15s;
+  }
+  .pb-difftab.on{background:var(--green);color:#fff}
+
   .pb-diag-card{display:none}
-  .pb-diag-card.pb-active{display:flex}
+  .pb-diag-card.pb-active{
+    display:flex;
+    animation:pbFadeIn .2s ease;
+  }
+  @keyframes pbFadeIn{from{opacity:0}to{opacity:1}}
+
+  /* Header "Femmes + spécifique" masqué : redondant avec le tab actif */
+  #probleme .pb-stat-label{display:none}
+
+  /* Carte allégée : moins de hauteur, pas de bordure lourde */
+  #probleme .pb-diag-card{padding:0;border:none}
+
+  /* Lignes compactes séparées par un filet fin, comme les Bénéfices */
+  #probleme .pb-stat-rows{gap:0;margin-bottom:0}
+  #probleme .pb-stat-row{
+    padding:.7rem 0;
+    border-top:1px solid var(--border);
+  }
+  #probleme .pb-stat-row:first-child{border-top:none;padding-top:0}
+
+  /* Flèche intégrée au texte plutôt que détachée à gauche */
+  #probleme .pb-arrow{display:none}
+  #probleme .pb-stat-row strong[data-arrow]::after{
+    content:" " attr(data-arrow);
+    color:var(--green);font-weight:800;
+  }
+  #probleme .pb-vi-arrow{display:none}
+  #probleme .pb-stat-value[data-arrow]::after{
+    content:" " attr(data-arrow);
+    color:var(--green);font-weight:700;
+  }
+
+  /* "En savoir plus" — discret, séparé par un filet léger */
+  #probleme .pb-detail{font-size:.8rem}
+  #probleme .pb-toggle{
+    margin-top:.75rem;padding-top:.7rem;
+    border-top:1px solid var(--border);
+    font-size:.7rem;font-weight:500;color:var(--muted);
+  }
 }
 
 #compare{background:var(--cream);padding:var(--py) 0}
@@ -316,7 +363,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
   .acces-layout{gap:2rem}
   .bpanel.on{grid-template-columns:1fr;gap:.75rem}
 }
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}html{scroll-behavior:auto}}
 :focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:3px}
 
 /* ════════════════════════════════════════
