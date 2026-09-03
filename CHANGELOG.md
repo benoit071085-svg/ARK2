@@ -3,7 +3,29 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
-## v17 — 2026-07-24
+## v18 — 2026-09-03
+
+**Option A uniquement** — série d'ajustements UX/UI itérés en preview avant validation, tous scopés via `html[data-variant="A-performance"]` pour ne jamais affecter Option B (vérifié à chaque étape par comparaison des règles CSS partagées contre la production).
+
+**Hero**
+- Nouveau texte exact (constat physiologique → nécessité → proposition de valeur), phrase clé en gras.
+- Label "Nutrition de performance durable 40+" : typographie strictement identique à `.eyebrow` (même famille/taille/letter-spacing/couleur que "Le diagnostic"), poids renforcé (900), remonté significativement dans la zone vide du Hero (desktop et mobile traités séparément), taille réduite sur mobile (11px).
+- Hero non centré verticalement mais ancré en haut (Option A uniquement) ; padding supérieur fortement réduit.
+
+**Diagnostic**
+- Nouveau texte d'intro en 3 paragraphes (plus court, direct), 2e phrase légèrement renforcée.
+- Headline "Votre entraînement n'a pas changé..." compactée sur mobile uniquement (desktop inchangé).
+- Les 3 cartes Commun 40+/Femmes/Hommes restent en onglets sur mobile (système validé après un aller-retour avec une variante en matrice 3 colonnes, finalement écartée).
+- Compaction du spacing (~15-20%) : espace avant/après le tableau, padding des cartes, gap entre enjeux, espace avant "En savoir plus" — desktop et mobile, aucun wording ni taille de police touché.
+- Suppression complète du tableau comparatif.
+- Intro Gamme mise à jour. Footer piliers 1 et 3 mis à jour.
+
+**Bénéfices**
+- Labels courts sur mobile uniquement ("À l'effort", "Au quotidien", "Dans la durée"), aucune troncature. Desktop conserve les libellés complets d'origine (technique double-span).
+
+**Vérifié avant ce commit** : contenu HTML et toutes les règles CSS partagées affectant Option B strictement identiques à la production (comparaison automatisée exhaustive) ; syntaxe CSS/JS valide sur les 2 fichiers ; Concept, Bénéfices desktop, Science, Accès/formulaire (dont le champ Homme/Femme de v15) et footer piliers 2/4 inchangés.
+
+## v17 (jamais publiée — remplacée par v18)
 
 **Diagnostic — optimisation UX mobile uniquement** (Option A). Desktop strictement inchangé (aucune règle en dehors de `@media(max-width:640px)` touchée, hormis un ajout global d'accessibilité sans impact visuel — voir plus bas).
 

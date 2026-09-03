@@ -55,8 +55,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
-  /* Diagnostic multi-cartes : bascule d'onglet mobile (Commun/Femmes/Hommes),
-     classes inertes si la page n'a pas ce composant (ex: Option B) */
+  /* Diagnostic — onglets mobile Commun/Femmes/Hommes (inertes si absents, ex: Option B) */
   document.querySelectorAll('.pb-difftab').forEach(function(btn){
     btn.addEventListener('click', function(e){
       e.stopPropagation();

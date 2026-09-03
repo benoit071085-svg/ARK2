@@ -152,7 +152,35 @@ section[id]{scroll-margin-top:76px}
    DIAGNOSTIC — multi-cartes Commun / Femmes / Hommes
    (utilisé par Option A ; classes inertes si absentes du HTML d'une page)
 ══════════════════════════════════════ */
-.hero-territory{display:flex;align-items:center}
+.hero-territory{
+  /* Typographie strictement identique à .eyebrow (Le diagnostic, etc.) :
+     family, taille, letter-spacing, casse et couleur hérités tels quels.
+     Seule différence volontaire : plus gras, pour plus de présence. */
+  display:flex;align-items:center;
+  font-weight:900;
+  margin-bottom:2.5rem;
+}
+.hero-sub strong{color:var(--off);font-weight:700}
+
+/* Territoire remonté significativement dans la zone vide du Hero — Option A
+   uniquement, desktop ET mobile. Le Hero n'est plus centré verticalement
+   (ancré en haut), et l'espace au-dessus du label est fortement réduit
+   pour qu'il utilise l'espace déjà disponible, sans déplacer la headline. */
+html[data-variant="A-performance"] #hero{align-items:flex-start}
+html[data-variant="A-performance"] #hero .wrap{padding-top:clamp(1rem,2.5vw,1.5rem)}
+
+@media(max-width:900px){
+  /* Mobile : label plus petit qu'actuellement, remonté dans la zone vide */
+  html[data-variant="A-performance"] .hero-territory{
+    font-size:11px;
+    margin-bottom:1.4rem;
+  }
+  html[data-variant="A-performance"] #hero .wrap{padding-top:clamp(.85rem,3vw,1.25rem)}
+}
+
+@media(min-width:901px){
+  .hero-territory{margin-bottom:3rem}
+}
 .pb-stat-label{
   display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;
   font-family:var(--display);
@@ -178,64 +206,41 @@ section[id]{scroll-margin-top:76px}
 .pb-stat-value{display:block;font-size:.76rem;color:var(--muted);margin-top:.1rem}
 
 .pb-difftabs{display:none}
+
+/* Compaction de la zone Diagnostic — Option A uniquement (~15-20%), desktop + mobile */
+html[data-variant="A-performance"] #probleme .pb-header{margin-bottom:2rem}
+html[data-variant="A-performance"] #probleme .pb-stats{margin-bottom:1.4rem}
+html[data-variant="A-performance"] #probleme .pb-stat{padding:1.2rem 1.6rem}
+html[data-variant="A-performance"] #probleme .pb-stat-rows{gap:.52rem}
+html[data-variant="A-performance"] #probleme .pb-toggle{margin-top:.48rem}
 @media(max-width:640px){
-  /* Segmented control — un seul composant à 3 options, pas 3 boutons séparés */
+  html[data-variant="A-performance"] #probleme .pb-stat{padding:1rem 0}
+  html[data-variant="A-performance"] #probleme .pb-difftabs{margin-bottom:.8rem}
+}
+
+@media(max-width:640px){
+  /* Headline diagnostic : plus compacte sur mobile uniquement (desktop inchangé) */
+  #probleme .pb-header h2{
+    font-size:1.32rem;
+    line-height:1.12;
+    letter-spacing:-.015em;
+  }
+
+  /* Onglets Commun 40+ / Femmes / Hommes — un seul composant compact */
   .pb-difftabs{
-    display:flex;gap:2px;
-    background:var(--off);
-    border-radius:10px;
-    padding:2px;
-    margin-bottom:.9rem;
+    display:flex;gap:.4rem;margin-bottom:1rem;
   }
   .pb-difftab{
-    flex:1;font-family:var(--body);font-size:.7rem;font-weight:600;
-    padding:.5rem .3rem;border:none;border-radius:8px;
+    flex:1;font-family:var(--body);font-size:.72rem;font-weight:600;
+    padding:.6rem .3rem;border:1px solid var(--border);border-radius:8px;
     background:transparent;color:var(--muted);cursor:pointer;text-align:center;
-    transition:background .15s,color .15s;
   }
-  .pb-difftab.on{background:var(--green);color:#fff}
+  .pb-difftab.on{background:var(--green);color:#fff;border-color:var(--green)}
 
   .pb-diag-card{display:none}
-  .pb-diag-card.pb-active{
-    display:flex;
-    animation:pbFadeIn .2s ease;
-  }
-  @keyframes pbFadeIn{from{opacity:0}to{opacity:1}}
-
-  /* Header "Femmes + spécifique" masqué : redondant avec le tab actif */
-  #probleme .pb-stat-label{display:none}
-
-  /* Carte allégée : moins de hauteur, pas de bordure lourde */
-  #probleme .pb-diag-card{padding:0;border:none}
-
-  /* Lignes compactes séparées par un filet fin, comme les Bénéfices */
-  #probleme .pb-stat-rows{gap:0;margin-bottom:0}
-  #probleme .pb-stat-row{
-    padding:.7rem 0;
-    border-top:1px solid var(--border);
-  }
-  #probleme .pb-stat-row:first-child{border-top:none;padding-top:0}
-
-  /* Flèche intégrée au texte plutôt que détachée à gauche */
-  #probleme .pb-arrow{display:none}
-  #probleme .pb-stat-row strong[data-arrow]::after{
-    content:" " attr(data-arrow);
-    color:var(--green);font-weight:800;
-  }
-  #probleme .pb-vi-arrow{display:none}
-  #probleme .pb-stat-value[data-arrow]::after{
-    content:" " attr(data-arrow);
-    color:var(--green);font-weight:700;
-  }
-
-  /* "En savoir plus" — discret, séparé par un filet léger */
-  #probleme .pb-detail{font-size:.8rem}
-  #probleme .pb-toggle{
-    margin-top:.75rem;padding-top:.7rem;
-    border-top:1px solid var(--border);
-    font-size:.7rem;font-weight:500;color:var(--muted);
-  }
+  .pb-diag-card.pb-active{display:flex}
 }
+
 
 #compare{background:var(--cream);padding:var(--py) 0}
 .compare-head{margin-bottom:.9rem;max-width:660px}
@@ -619,6 +624,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 }
 .btab:last-child{border-right:none}
 .btab.on{background:var(--ink);color:var(--white)}
+.btab-short{display:none}
 
 /* Panels */
 .bpanel{display:none;opacity:0;transition:opacity .2s ease}
@@ -633,6 +639,13 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 /* Mobile compact bpanel */
 @media(max-width:640px){
   #benefices .btabs{margin:.6rem 0 .9rem}
+  .btab-full{display:none}
+  .btab-short{
+    display:block;
+    font-size:.72rem;font-weight:600;
+    white-space:nowrap;overflow:visible;text-overflow:clip;
+  }
+  #benefices .btab{padding:.5rem .3rem;overflow:visible;text-overflow:clip;white-space:normal;line-height:1.2}
   .bpanel.on{
     display:block!important;
   }
@@ -1188,8 +1201,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
-  /* Diagnostic multi-cartes : bascule d'onglet mobile (Commun/Femmes/Hommes),
-     classes inertes si la page n'a pas ce composant (ex: Option B) */
+  /* Diagnostic — onglets mobile Commun/Femmes/Hommes (inertes si absents, ex: Option B) */
   document.querySelectorAll('.pb-difftab').forEach(function(btn){
     btn.addEventListener('click', function(e){
       e.stopPropagation();

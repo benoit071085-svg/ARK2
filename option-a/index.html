@@ -152,7 +152,35 @@ section[id]{scroll-margin-top:76px}
    DIAGNOSTIC — multi-cartes Commun / Femmes / Hommes
    (utilisé par Option A ; classes inertes si absentes du HTML d'une page)
 ══════════════════════════════════════ */
-.hero-territory{display:flex;align-items:center}
+.hero-territory{
+  /* Typographie strictement identique à .eyebrow (Le diagnostic, etc.) :
+     family, taille, letter-spacing, casse et couleur hérités tels quels.
+     Seule différence volontaire : plus gras, pour plus de présence. */
+  display:flex;align-items:center;
+  font-weight:900;
+  margin-bottom:2.5rem;
+}
+.hero-sub strong{color:var(--off);font-weight:700}
+
+/* Territoire remonté significativement dans la zone vide du Hero — Option A
+   uniquement, desktop ET mobile. Le Hero n'est plus centré verticalement
+   (ancré en haut), et l'espace au-dessus du label est fortement réduit
+   pour qu'il utilise l'espace déjà disponible, sans déplacer la headline. */
+html[data-variant="A-performance"] #hero{align-items:flex-start}
+html[data-variant="A-performance"] #hero .wrap{padding-top:clamp(1rem,2.5vw,1.5rem)}
+
+@media(max-width:900px){
+  /* Mobile : label plus petit qu'actuellement, remonté dans la zone vide */
+  html[data-variant="A-performance"] .hero-territory{
+    font-size:11px;
+    margin-bottom:1.4rem;
+  }
+  html[data-variant="A-performance"] #hero .wrap{padding-top:clamp(.85rem,3vw,1.25rem)}
+}
+
+@media(min-width:901px){
+  .hero-territory{margin-bottom:3rem}
+}
 .pb-stat-label{
   display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;
   font-family:var(--display);
@@ -178,64 +206,41 @@ section[id]{scroll-margin-top:76px}
 .pb-stat-value{display:block;font-size:.76rem;color:var(--muted);margin-top:.1rem}
 
 .pb-difftabs{display:none}
+
+/* Compaction de la zone Diagnostic — Option A uniquement (~15-20%), desktop + mobile */
+html[data-variant="A-performance"] #probleme .pb-header{margin-bottom:2rem}
+html[data-variant="A-performance"] #probleme .pb-stats{margin-bottom:1.4rem}
+html[data-variant="A-performance"] #probleme .pb-stat{padding:1.2rem 1.6rem}
+html[data-variant="A-performance"] #probleme .pb-stat-rows{gap:.52rem}
+html[data-variant="A-performance"] #probleme .pb-toggle{margin-top:.48rem}
 @media(max-width:640px){
-  /* Segmented control — un seul composant à 3 options, pas 3 boutons séparés */
+  html[data-variant="A-performance"] #probleme .pb-stat{padding:1rem 0}
+  html[data-variant="A-performance"] #probleme .pb-difftabs{margin-bottom:.8rem}
+}
+
+@media(max-width:640px){
+  /* Headline diagnostic : plus compacte sur mobile uniquement (desktop inchangé) */
+  #probleme .pb-header h2{
+    font-size:1.32rem;
+    line-height:1.12;
+    letter-spacing:-.015em;
+  }
+
+  /* Onglets Commun 40+ / Femmes / Hommes — un seul composant compact */
   .pb-difftabs{
-    display:flex;gap:2px;
-    background:var(--off);
-    border-radius:10px;
-    padding:2px;
-    margin-bottom:.9rem;
+    display:flex;gap:.4rem;margin-bottom:1rem;
   }
   .pb-difftab{
-    flex:1;font-family:var(--body);font-size:.7rem;font-weight:600;
-    padding:.5rem .3rem;border:none;border-radius:8px;
+    flex:1;font-family:var(--body);font-size:.72rem;font-weight:600;
+    padding:.6rem .3rem;border:1px solid var(--border);border-radius:8px;
     background:transparent;color:var(--muted);cursor:pointer;text-align:center;
-    transition:background .15s,color .15s;
   }
-  .pb-difftab.on{background:var(--green);color:#fff}
+  .pb-difftab.on{background:var(--green);color:#fff;border-color:var(--green)}
 
   .pb-diag-card{display:none}
-  .pb-diag-card.pb-active{
-    display:flex;
-    animation:pbFadeIn .2s ease;
-  }
-  @keyframes pbFadeIn{from{opacity:0}to{opacity:1}}
-
-  /* Header "Femmes + spécifique" masqué : redondant avec le tab actif */
-  #probleme .pb-stat-label{display:none}
-
-  /* Carte allégée : moins de hauteur, pas de bordure lourde */
-  #probleme .pb-diag-card{padding:0;border:none}
-
-  /* Lignes compactes séparées par un filet fin, comme les Bénéfices */
-  #probleme .pb-stat-rows{gap:0;margin-bottom:0}
-  #probleme .pb-stat-row{
-    padding:.7rem 0;
-    border-top:1px solid var(--border);
-  }
-  #probleme .pb-stat-row:first-child{border-top:none;padding-top:0}
-
-  /* Flèche intégrée au texte plutôt que détachée à gauche */
-  #probleme .pb-arrow{display:none}
-  #probleme .pb-stat-row strong[data-arrow]::after{
-    content:" " attr(data-arrow);
-    color:var(--green);font-weight:800;
-  }
-  #probleme .pb-vi-arrow{display:none}
-  #probleme .pb-stat-value[data-arrow]::after{
-    content:" " attr(data-arrow);
-    color:var(--green);font-weight:700;
-  }
-
-  /* "En savoir plus" — discret, séparé par un filet léger */
-  #probleme .pb-detail{font-size:.8rem}
-  #probleme .pb-toggle{
-    margin-top:.75rem;padding-top:.7rem;
-    border-top:1px solid var(--border);
-    font-size:.7rem;font-weight:500;color:var(--muted);
-  }
+  .pb-diag-card.pb-active{display:flex}
 }
+
 
 #compare{background:var(--cream);padding:var(--py) 0}
 .compare-head{margin-bottom:.9rem;max-width:660px}
@@ -619,6 +624,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 }
 .btab:last-child{border-right:none}
 .btab.on{background:var(--ink);color:var(--white)}
+.btab-short{display:none}
 
 /* Panels */
 .bpanel{display:none;opacity:0;transition:opacity .2s ease}
@@ -633,6 +639,13 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
 /* Mobile compact bpanel */
 @media(max-width:640px){
   #benefices .btabs{margin:.6rem 0 .9rem}
+  .btab-full{display:none}
+  .btab-short{
+    display:block;
+    font-size:.72rem;font-weight:600;
+    white-space:nowrap;overflow:visible;text-overflow:clip;
+  }
+  #benefices .btab{padding:.5rem .3rem;overflow:visible;text-overflow:clip;white-space:normal;line-height:1.2}
   .bpanel.on{
     display:block!important;
   }
@@ -860,7 +873,7 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
       <h1>
         Pour que le sport reste<br>votre meilleur alli&eacute; long&eacute;vit&eacute;
       </h1>
-      <p class="hero-sub">Apr&egrave;s 40 ans, votre corps ne r&eacute;pond plus &agrave; l&rsquo;effort comme avant. Votre physiologie &eacute;volue.<br>Votre nutrition doit &eacute;voluer elle aussi.<br>La nutrition sportive quotidienne pens&eacute;e pour accompagner la physiologie des femmes et des hommes actifs apr&egrave;s 40 ans afin de pr&eacute;server durablement leur pratique sportive et leur &eacute;nergie du quotidien.</p>
+      <p class="hero-sub">Apr&egrave;s 40 ans, votre corps ne r&eacute;pond plus &agrave; l&rsquo;effort comme avant. Votre physiologie &eacute;volue. <strong>Votre nutrition doit &eacute;voluer elle aussi.</strong><br><br>La premi&egrave;re nutrition sportive quotidienne qui accompagne les femmes et les hommes actifs apr&egrave;s 40 ans afin de pr&eacute;server durablement leur pratique sportive et leur &eacute;nergie du quotidien.</p>
       <div class="hero-cta-row">
         <a class="cta cta-hero" href="#acces" data-cta-location="hero">
           S&rsquo;inscrire en acc&egrave;s prioritaire
@@ -878,10 +891,9 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
     <span class="eyebrow">Le diagnostic</span>
     <div class="pb-header">
       <h2>Votre entra&icirc;nement n&rsquo;a pas chang&eacute;.<br>Votre corps, si.</h2>
-      <p style="margin-top:.9rem">Vous continuez &agrave; vous entra&icirc;ner.</p>
-      <p style="margin-top:.65rem">Parce que le sport vous aide &agrave; rester en forme, mieux dormir, &eacute;vacuer le stress et donner le meilleur de vous-m&ecirc;me au quotidien.</p>
-      <p style="margin-top:.65rem">Mais apr&egrave;s 40 ans, votre corps vous rappelle que les r&egrave;gles ont chang&eacute;. Les m&ecirc;mes efforts ne produisent plus toujours les m&ecirc;mes b&eacute;n&eacute;fices.</p>
-      <p style="margin-top:.65rem">Et si certains changements sont communs &agrave; tous, les &eacute;volutions hormonales cr&eacute;ent aussi des enjeux sp&eacute;cifiques chez les femmes et les hommes.</p>
+      <p style="margin-top:.9rem">Vous continuez &agrave; vous entra&icirc;ner parce que le sport vous aide &agrave; rester en forme, mieux dormir et donner le meilleur de vous-m&ecirc;me au quotidien.</p>
+      <p style="margin-top:.65rem">Mais apr&egrave;s 40 ans, les r&egrave;gles changent&nbsp;: <strong>les m&ecirc;mes efforts ne produisent plus toujours les m&ecirc;mes b&eacute;n&eacute;fices.</strong></p>
+      <p style="margin-top:.65rem">Certains changements concernent tous les sportifs. Les &eacute;volutions hormonales cr&eacute;ent aussi des enjeux sp&eacute;cifiques chez les femmes et les hommes.</p>
     </div>
     <div class="pb-difftabs" role="tablist" aria-label="Choisir une cat&eacute;gorie">
       <button class="pb-difftab on" role="tab" aria-selected="true" data-target="pb-commun">Commun 40+</button>
@@ -892,9 +904,9 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
       <div class="pb-stat pb-diag-card pb-active" id="pb-commun" tabindex="0" aria-expanded="false">
         <span class="pb-stat-label">Commun &agrave; tous 40+</span>
         <div class="pb-stat-rows">
-          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong data-arrow="&darr;">Capacit&eacute; a&eacute;robie</strong><span class="pb-stat-value">VO&#8322; max (&minus;1%&thinsp;/&thinsp;an)</span></div></div>
-          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong data-arrow="&darr;">Masse musculaire</strong><span class="pb-stat-value">(&minus;2%&thinsp;/&thinsp;an)</span></div></div>
-          <div class="pb-stat-row"><span class="pb-arrow">&uarr;</span><div><strong data-arrow="&uarr;">Besoin de r&eacute;cup&eacute;ration</strong><span class="pb-stat-value">(&gt;48&ndash;72h)</span></div></div>
+          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong>Capacit&eacute; a&eacute;robie</strong><span class="pb-stat-value">VO&#8322; max (&minus;1%&thinsp;/&thinsp;an)</span></div></div>
+          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong>Masse musculaire</strong><span class="pb-stat-value">(&minus;2%&thinsp;/&thinsp;an)</span></div></div>
+          <div class="pb-stat-row"><span class="pb-arrow">&uarr;</span><div><strong>Besoin de r&eacute;cup&eacute;ration</strong><span class="pb-stat-value">(&gt;48&ndash;72h)</span></div></div>
         </div>
         <div class="pb-detail">Avec l&rsquo;&acirc;ge, capacit&eacute;s a&eacute;robie et musculaire diminuent progressivement et la r&eacute;cup&eacute;ration devient plus exigeante.</div>
         <span class="pb-toggle">En savoir plus &darr;</span>
@@ -902,9 +914,9 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
       <div class="pb-stat pb-diag-card" id="pb-femmes" tabindex="0" aria-expanded="false">
         <span class="pb-stat-label">&#9792; Femmes <em class="pb-stat-plus">+ sp&eacute;cifique</em></span>
         <div class="pb-stat-rows">
-          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong data-arrow="&darr;">Œstrog&egrave;nes</strong><span class="pb-stat-value">Fragilit&eacute; tendons &amp; tissus</span></div></div>
-          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong data-arrow="&darr;">Densit&eacute; osseuse</strong><span class="pb-stat-value" data-arrow="&uarr;"><span class="pb-vi-arrow">&uarr;</span> Risque de fracture</span></div></div>
-          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong data-arrow="&darr;">Fer</strong><span class="pb-stat-value" data-arrow="&darr;"><span class="pb-vi-arrow">&darr;</span> Disponibilit&eacute; &eacute;nerg&eacute;tique</span></div></div>
+          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong>Œstrog&egrave;nes</strong><span class="pb-stat-value">Fragilit&eacute; tendons &amp; tissus</span></div></div>
+          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong>Densit&eacute; osseuse</strong><span class="pb-stat-value">&uarr; Risque de fracture</span></div></div>
+          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong>Fer</strong><span class="pb-stat-value">&darr; Disponibilit&eacute; &eacute;nerg&eacute;tique</span></div></div>
         </div>
         <div class="pb-detail">La transition hormonale, notamment autour de la m&eacute;nopause, renforce les enjeux li&eacute;s &agrave; la sant&eacute; osseuse, aux tissus musculo-tendineux et au statut en fer.</div>
         <span class="pb-toggle">En savoir plus &darr;</span>
@@ -912,14 +924,15 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
       <div class="pb-stat pb-diag-card" id="pb-hommes" tabindex="0" aria-expanded="false">
         <span class="pb-stat-label">&#9794; Hommes <em class="pb-stat-plus">+ sp&eacute;cifique</em></span>
         <div class="pb-stat-rows">
-          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong data-arrow="&darr;">Testost&eacute;rone</strong><span class="pb-stat-value" data-arrow="&uarr;"><span class="pb-vi-arrow">&uarr;</span> Graisse abdominale</span></div></div>
-          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong data-arrow="&darr;">Assimilation prot&eacute;ines</strong><span class="pb-stat-value" data-arrow="&darr;"><span class="pb-vi-arrow">&darr;</span> Masse &amp; force</span></div></div>
-          <div class="pb-stat-row"><span class="pb-arrow">&uarr;</span><div><strong data-arrow="&uarr;">Risques ligamenteux</strong><span class="pb-stat-value">&nbsp;</span></div></div>
+          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong>Testost&eacute;rone</strong><span class="pb-stat-value">&uarr; Graisse abdominale</span></div></div>
+          <div class="pb-stat-row"><span class="pb-arrow">&darr;</span><div><strong>Assimilation prot&eacute;ines</strong><span class="pb-stat-value">&darr; Masse &amp; force</span></div></div>
+          <div class="pb-stat-row"><span class="pb-arrow">&uarr;</span><div><strong>Risques ligamenteux</strong><span class="pb-stat-value">&nbsp;</span></div></div>
         </div>
         <div class="pb-detail">L&rsquo;&eacute;volution hormonale contribue progressivement aux changements de masse musculaire, de force et de composition corporelle.</div>
         <span class="pb-toggle">En savoir plus &darr;</span>
       </div>
     </div>
+
     <!-- Light, elegant diagnostic footer -->
     <div class="pb-footer">
       <p class="pb-footer-statement"><strong>Ce n&rsquo;est pas une question de volont&eacute;. C&rsquo;est une question de physiologie.</strong></p>
@@ -998,9 +1011,9 @@ footer{background:#0B100D;padding:2rem 0;border-top:1px solid rgba(255,255,255,.
     <span class="eyebrow">B&eacute;n&eacute;fices</span>
     <h2>Ce que cela change concr&egrave;tement.</h2>
     <div class="btabs" role="tablist" aria-label="Filtrer les b&eacute;n&eacute;fices">
-      <button class="btab on" role="tab" aria-selected="true"  data-tab="bp-sport" id="tab-sport">Pendant vos s&eacute;ances</button>
-      <button class="btab"    role="tab" aria-selected="false" data-tab="bp-vie"   id="tab-vie">Chaque jour</button>
-      <button class="btab"    role="tab" aria-selected="false" data-tab="bp-long"  id="tab-long">Pendant des ann&eacute;es</button>
+      <button class="btab on" role="tab" aria-selected="true"  data-tab="bp-sport" id="tab-sport"><span class="btab-full">Pendant vos s&eacute;ances</span><span class="btab-short">&Agrave; l&rsquo;effort</span></button>
+      <button class="btab"    role="tab" aria-selected="false" data-tab="bp-vie"   id="tab-vie"><span class="btab-full">Chaque jour</span><span class="btab-short">Au quotidien</span></button>
+      <button class="btab"    role="tab" aria-selected="false" data-tab="bp-long"  id="tab-long"><span class="btab-full">Pendant des ann&eacute;es</span><span class="btab-short">Dans la dur&eacute;e</span></button>
     </div>
     <div>
       <div class="bpanel on" id="bp-sport" role="tabpanel" aria-labelledby="tab-sport">
@@ -1191,8 +1204,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
-  /* Diagnostic multi-cartes : bascule d'onglet mobile (Commun/Femmes/Hommes),
-     classes inertes si la page n'a pas ce composant (ex: Option B) */
+  /* Diagnostic — onglets mobile Commun/Femmes/Hommes (inertes si absents, ex: Option B) */
   document.querySelectorAll('.pb-difftab').forEach(function(btn){
     btn.addEventListener('click', function(e){
       e.stopPropagation();
