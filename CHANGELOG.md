@@ -3,6 +3,28 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v19 — 2026-09-04
+
+**Option B uniquement** (`option-b/index.html`) — refonte complète du territoire "Récupération durable 40+". Option A strictement inchangée.
+
+**Hero** : nouveau label territoire "Nutrition de récupération durable 40+" (typographie `.eyebrow`, scopée Option B), nouvelle headline "Continuez à faire le sport que vous aimez. Plus longtemps.", nouveau texte (3 phrases, 2 premières en gras), nouvelle photo kitesurfer N&B (harmonisée — même recette de grading que les photos d'Option A).
+
+**Diagnostic** : headline "Votre entraînement n'a pas changé. Son impact, si.", intro 3 paragraphes avec bolds exacts, nouvelles cartes Commun/Femmes/Hommes orientées récupération (besoin récup↑, sommeil↓, collagène↓ / Œstrogènes/osseux/fer / testostérone+réparation, synthèse+masse, graisse+inflammation), pb-footer "Ce n'est pas une question de volonté. C'est une question de physiologie."
+
+**Section comparative "2 approches / vision des résultats" supprimée entièrement** (contenu, container, espace résiduel).
+
+**Concept** : texte conservé, nouvelle photo coureuses N&B (3 femmes, harmonisée).
+
+**Gamme** : intro "Deux moments clés de la récupération après 40 ans. Une approche qui tient compte des besoins physiologiques spécifiques des femmes et des hommes."
+
+**Bénéfices** : labels courts mobile "Après l'effort / Entre séances / Dans la durée" (double-span, desktop inchangé).
+
+**Science** : titre "Fondée sur la science du sport. Adaptée à la physiologie des sportifs actifs 40+."
+
+**Formulaire** : champ "Vous êtes" (Homme/Femme) ajouté, capté automatiquement par FormData.
+
+**Vérifié avant commit** : un seul fichier modifié (`option-b/index.html`), Option A strictement intacte, syntaxe CSS/JS valide, 9 points de texte exact vérifiés programmatiquement.
+
 ## v18 — 2026-09-03
 
 **Option A uniquement** — série d'ajustements UX/UI itérés en preview avant validation, tous scopés via `html[data-variant="A-performance"]` pour ne jamais affecter Option B (vérifié à chaque étape par comparaison des règles CSS partagées contre la production).
