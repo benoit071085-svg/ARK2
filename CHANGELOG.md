@@ -3,6 +3,35 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v20 — 2026-09-15
+
+**Option A + Option B** — série d'optimisations Hero (textes + layout), puis système FR/EN, puis compaction layout Hero.
+
+**Textes Hero (Option A)**
+- Eyebrow territoire : "NOURRIR L'EFFORT. SOUTENIR L'ADAPTATION. RÉPÉTER LA PERFORMANCE."
+- Headline : "Renforcer son métabolisme pour une énergie durable et un corps plus résistant." (sans "après 40 ans" — déjà présent dans le paragraphe 1)
+- Texte : 3 paragraphes distincts, aucun bold
+
+**Textes Hero (Option B)**
+- Eyebrow territoire : "PRATIQUER. MIEUX RÉCUPÉRER. CONTINUER LONGTEMPS."
+- Headline : "Récupération renforcée : indispensable pour pratiquer régulièrement et le plus longtemps possible."
+- Texte : 3 paragraphes distincts, aucun bold
+
+**Sélecteur FR / EN (les deux pages)**
+- Boutons FR | EN discrets dans la nav
+- Système data-fr/data-en + JS en place (localStorage), couvre nav, hero, diagnostic, formulaire, footer
+
+**Layout Hero (les deux pages, CSS uniquement)**
+- `min-height:90vh` supprimé → Hero pilotée par son contenu, plus de grande zone vide
+- `padding-top` réduit à `clamp(0.8rem, 2vw, 1.2rem)` → eyebrow vert proche du header
+- `padding-bottom` réduit à `clamp(2rem, 4vw, 2.5rem)` → plus de flottement sous le CTA
+- `h1` réduit à `clamp(1.9rem, 3.8vw, 3rem)` → headline sur 2–3 lignes
+- `.hero-inner` élargi à `740px`, `.hero-sub` à `680px`
+- CTA + microcopy empilés verticalement (`flex-direction:column`) → microcopy sous le bouton sur desktop ET mobile
+- Option A et B : même architecture exacte, même logique responsive
+
+**Vérifié avant commit** : 2 fichiers uniquement modifiés, GA4 et formulaire (champ gender) intacts sur les deux pages, syntaxe CSS valide (braces équilibrées).
+
 ## v19 — 2026-09-04
 
 **Option B uniquement** (`option-b/index.html`) — refonte complète du territoire "Récupération durable 40+". Option A strictement inchangée.
