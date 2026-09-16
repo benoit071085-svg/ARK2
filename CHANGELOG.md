@@ -3,6 +3,18 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v21 — 2026-09-16
+
+**Option A uniquement** — implémentation complète FR/EN depuis la source approuvée.
+
+Méthode : reparti de v20 avec suppression chirurgicale de tout le code FR/EN existant (data-fr/data-en, data-i18n, lang-switch CSS+HTML, applyLang JS), puis réimplémentation from scratch depuis `Perform40_Recover40_FR_EN_String_Mapping_FINAL.docx`.
+
+173 paires FR/EN couvrant : header, hero (eyebrow, H1, 3 paragraphes, CTA, microcopy), diagnostic (eyebrow, H2, intro ×3, tabs ×3, cartes Commun/Femmes/Hommes ×9 lignes + explications, pb-footer), concept (eyebrow, ×7 éléments, tagline), gamme (H2, intro, 2 produits ×4 bénéfices chacun, CTAs), bénéfices (eyebrow, H2, tabs desktop ×3, tabs mobile ×3, 3 panels ×2-3 cards chacun), science (eyebrow, H2, intro, 4 cartes ×titre/subtitle/label/ingrédients/mécanisme, proof strip), accès+formulaire (H2, ×4 bullets, ×3 blocs valeur, labels ×5, options select ×16, placeholder, checkbox ×2, CTA, légal, message succès), footer (×8 piliers + note légale).
+
+JS applyLang robuste : text nodes via innerHTML, options via textContent+decodeEntities, placeholders, html[lang], boutons, message succès.
+
+**Vérifié avant commit** : 1 seul fichier modifié (option-a/index.html), braces CSS équilibrées, 0 HTML imbriqué dans attributs, 0 double-annotation, texte FR visible identique à la base propre (écart = uniquement les boutons FR|EN ajoutés en nav).
+
 ## v20 — 2026-09-15
 
 **Option A + Option B** — série d'optimisations Hero (textes + layout), puis système FR/EN, puis compaction layout Hero.
