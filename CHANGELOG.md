@@ -3,6 +3,20 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v22 — 2026-09-16
+
+**Option A uniquement** — QA complet + corrections des annotations manquantes sur les chaînes répétées.
+
+**Causes racines corrigées :**
+- Chaînes répétées non annotées sur toutes leurs occurrences : "S'inscrire maintenant" (×6), "Bénéfices" (×6), "Je suis intéressé(e) par cette formule" (×4), "Accès prioritaire" (×6), "Rejoindre l'accès prioritaire" (×4)
+- "Aucun engagement" (h4 standalone dans bloc valeur) non annoté
+- Science intro non annoté (forme exacte non trouvée lors du premier passage)
+- Apostrophe `\'` dans valeurs data-en (escaping JS incorrectement appliqué en HTML)
+- Guillemets internes non échappés dans valeurs d'attributs data-fr (`<em class="...">` → `&quot;`)
+- Spans doubles/triples nettoyés (S'inscrire, Bénéfices, science intro)
+
+**État final :** 176 paires data-fr/data-en équilibrées, 0 span imbriqué, 0 guillemet non échappé, braces CSS équilibrées. Option B inchangée.
+
 ## v21 — 2026-09-16
 
 **Option A uniquement** — implémentation complète FR/EN depuis la source approuvée.
