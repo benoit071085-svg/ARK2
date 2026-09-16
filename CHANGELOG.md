@@ -3,6 +3,10 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v24 — 2026-09-16
+
+**Option B uniquement** — implémentation FR/EN uploadée directement (option-b-fr-en-preview.html). 185 paires data-fr/data-en, GA4 intact, form Netlify présent, 0 span imbriqué, braces CSS équilibrées. Option A inchangée.
+
 ## v23 — 2026-09-16
 
 **Option A uniquement** — version FR/EN uploadée directement (option-a-fr-en-preview_2.html). 191 paires data-fr/data-en, GA4 intact, form Netlify présent, 0 span imbriqué, braces CSS équilibrées. Option B inchangée.
