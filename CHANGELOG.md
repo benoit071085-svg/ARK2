@@ -3,6 +3,10 @@
 Format : chaque entrée précise si le changement est **Commun** (touche les
 2 pages via `shared/`), **Option A** ou **Option B** uniquement.
 
+## v25 — 2026-09-18
+
+**Option A + Option B** — mises à jour hero/concept/footer sur les deux pages. Option A (190 paires FR/EN), Option B (184 paires FR/EN). GA4 + Netlify form intacts, 0 span imbriqué, braces CSS équilibrées.
+
 ## v24 — 2026-09-16
 
 **Option B uniquement** — implémentation FR/EN uploadée directement (option-b-fr-en-preview.html). 185 paires data-fr/data-en, GA4 intact, form Netlify présent, 0 span imbriqué, braces CSS équilibrées. Option A inchangée.
